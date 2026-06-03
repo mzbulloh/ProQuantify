@@ -197,12 +197,10 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 
 /* Profile Portraits */
 .portrait-img {
-    height: 190px;
+    height: 170px;
     width: auto;
     object-fit: contain;
-    mix-blend-mode: multiply;
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    display: block;
 }
 
 /* Inline Mockup CSS */
@@ -747,19 +745,18 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
       We are not outsiders guessing at manufacturing problems. We built this engine to solve the specific quoting bottlenecks we have faced firsthand.
     </p>
   </div>
-  
-  <div class="grid-2" style="margin-bottom: 24px; max-width: 1060px; margin-inline: auto; width: 100%;">
-    
+
+  <div class="grid-2" style="margin-bottom:24px; max-width:1060px; margin-inline:auto; width:100%;">
+
     <!-- Gusti Card -->
-    <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-      <img 
-        class="portrait-img" 
-        src="https://raw.githubusercontent.com/mzbulloh/ProQuantify/main/Gusti_Portrait.png" 
-        alt="Gusti Portrait" 
-        style="height:170px; width:auto; object-fit:contain; margin-bottom:-5px;"
+    <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding:0 32px; overflow:hidden; height:170px; position:relative;">
+      <img
+        src="https://mzbulloh.github.io/ProQuantify/Gusti_Portrait.png"
+        alt="Gusti Portrait"
+        style="height:170px; width:auto; object-fit:contain; display:block; margin-bottom:-5px;"
       >
 
-      <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
+      <div style="padding:24px 0 24px 20px; z-index:2; position:relative;">
         <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Risman Gustiana Wardana</h3>
         <div class="tag tag-teal" style="margin-bottom:10px;">Chief Executive Officer</div>
         <p class="body-sm" style="font-size:12px;">
@@ -769,15 +766,14 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
     </div>
 
     <!-- Ahmad Card -->
-    <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-      <img 
-        class="portrait-img" 
-        src="https://raw.githubusercontent.com/mzbulloh/ProQuantify/main/Ahmad_Portrait.png" 
-        alt="Ahmad Portrait" 
-        style="height:170px; width:auto; object-fit:contain; margin-bottom:-5px;"
+    <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding:0 32px; overflow:hidden; height:170px; position:relative;">
+      <img
+        src="https://mzbulloh.github.io/ProQuantify/Ahmad_Portrait.png"
+        alt="Ahmad Portrait"
+        style="height:170px; width:auto; object-fit:contain; display:block; margin-bottom:-5px;"
       >
 
-      <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
+      <div style="padding:24px 0 24px 20px; z-index:2; position:relative;">
         <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Ahmad Habibulloh</h3>
         <div class="tag tag-amber" style="margin-bottom:10px;">Chief Technology Officer</div>
         <p class="body-sm" style="font-size:12px;">
@@ -787,24 +783,24 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
     </div>
 
   </div>
-  
-  <div class="grid-3" style="max-width: 1060px; margin-inline: auto; width: 100%;">
-    <div class="card" style="padding: 20px 24px;">
-      <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Yuh-Shying Gau</div>
-      <div style="font-size:12px;color:var(--stone-dark);">Industry Advisor</div>
+
+  <div class="grid-3" style="max-width:1060px; margin-inline:auto; width:100%;">
+    <div class="card" style="padding:20px 24px;">
+      <div style="font-size:15px; font-weight:700; color:var(--ink); margin-bottom:4px;">Prof. Yuh-Shying Gau</div>
+      <div style="font-size:12px; color:var(--stone-dark);">Industry Advisor</div>
     </div>
 
-    <div class="card" style="padding: 20px 24px;">
-      <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Jyun Ping Jhan</div>
-      <div style="font-size:12px;color:var(--stone-dark);">AI Development Advisor</div>
+    <div class="card" style="padding:20px 24px;">
+      <div style="font-size:15px; font-weight:700; color:var(--ink); margin-bottom:4px;">Prof. Jyun Ping Jhan</div>
+      <div style="font-size:12px; color:var(--stone-dark);">AI Development Advisor</div>
     </div>
 
-    <div class="card" style="border: 2px solid var(--teal); background: var(--teal-light); padding: 20px 24px; display:flex; align-items:center; justify-content:space-between;">
+    <div class="card" style="border:2px solid var(--teal); background:var(--teal-light); padding:20px 24px; display:flex; align-items:center; justify-content:space-between;">
       <div>
-        <div style="font-size:15px;font-weight:700;color:var(--teal);margin-bottom:4px;">Strategic Alliance</div>
-        <div style="font-size:12px;color:var(--teal);opacity:0.8;font-weight:500;">Major Ecosystem Partner</div>
+        <div style="font-size:15px; font-weight:700; color:var(--teal); margin-bottom:4px;">Strategic Alliance</div>
+        <div style="font-size:12px; color:var(--teal); opacity:0.8; font-weight:500;">Major Ecosystem Partner</div>
       </div>
-      <i class="fa-solid fa-handshake-angle" style="font-size: 26px; color: var(--teal);"></i>
+      <i class="fa-solid fa-handshake-angle" style="font-size:26px; color:var(--teal);"></i>
     </div>
   </div>
 </div>

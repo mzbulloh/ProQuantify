@@ -127,11 +127,11 @@ body {
   }
 }
 /* Nav */
-.foot { position: absolute; bottom: 0; left: 0; right: 0; height: 44px; background: var(--sand); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 36px; z-index: 50; }
+.foot { position: absolute; bottom: 0; left: 0; right: 0; height: 44px; background: var(--sand); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
 .foot-brand { font-size: 12px; font-weight: 700; color: var(--stone); letter-spacing: 0.04em; }
 .foot-num { font-size: 12px; color: var(--stone); font-weight: 500; }
 .foot-nav { display: flex; gap: 8px; }
-.nav-btn { width: 28px; height: 28px; background: transparent; border: 1px solid var(--border-med); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--stone-dark); font-size: 12px; transition: all 0.15s; }
+.nav-btn { width: 28px; height: 28px; background: transparent; border: 1px solid var(--border-med); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--stone); transition: 0.2s; }
 .nav-btn:hover { background: var(--sand-mid); }
 .foot-dark { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); }
 .foot-dark .foot-brand, .foot-dark .foot-num, .foot-dark .nav-btn { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2); }
@@ -187,12 +187,12 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 .flow-container { display: flex; justify-content: space-between; position: relative; margin: 40px 20px; }
 .flow-line { position: absolute; top: 40px; left: 70px; right: 70px; height: 3px; background: var(--border-med); z-index: 1; }
 .flow-node { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center; }
-.flow-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--cream); border: 3px solid var(--border-med); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--stone); margin-bottom: 16px; box-shadow: 0 8px 16px rgba(0,0,0,0.04); transition: all 0.3s; position: relative; }
+.flow-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--cream); border: 3px solid var(--border-med); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--stone-dark); transition: 0.3s ease; margin-bottom: 12px; }
 .flow-node.active .flow-icon { background: var(--navy); border-color: var(--navy); color: white; box-shadow: 0 12px 24px rgba(27,42,59,0.2); transform: scale(1.05); }
 .flow-node.highlight .flow-icon { background: var(--teal); border-color: var(--teal); color: white; box-shadow: 0 12px 24px rgba(29,122,107,0.2); transform: scale(1.05); }
 .flow-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
 .flow-desc { font-size: 12px; color: var(--stone-dark); line-height: 1.4; }
-.flow-step-num { position: absolute; top: -8px; right: -8px; background: var(--amber); color: white; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid var(--cream); z-index: 3; }
+.flow-step-num { position: absolute; top: -8px; right: -8px; background: var(--amber); color: white; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; }
 .flow-node.active .flow-step-num { background: var(--teal); }
 
 /* Profile Portraits */
@@ -222,10 +222,10 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 .mk-web-body { display: flex; flex: 1; }
 .mk-panel { padding: 24px; flex: 1; border-right: 1px solid var(--border); display: flex; flex-direction: column; }
 .mk-panel:last-child { border-right: none; background: var(--sand); }
-.mk-box { background: var(--sand); border: 1px solid var(--border); border-radius: 8px; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 12px; color: var(--stone); position: relative; overflow: hidden;}
+.mk-box { background: var(--sand); border: 1px solid var(--border); border-radius: 8px; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 12px; position: relative; overflow: hidden; }
 .mk-log { font-family: monospace; font-size: 12px; color: var(--stone-dark); padding: 6px 0; opacity: 0; transition: opacity 0.3s; }
 .mk-log.show { opacity: 1; }
-.demo-btn { background: var(--teal); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 13px; }
+.demo-btn { background: var(--teal); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 14px; }
 .demo-btn:hover { background: var(--teal-mid); }
 .w-action-btn { flex: 1; background: var(--navy); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
 .w-action-btn:disabled { background: var(--sand-mid); color: var(--stone); cursor: not-allowed; border: 1px solid var(--border); }
@@ -237,7 +237,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 
   <!-- SLIDE 1: WHAT — Opening (MINIMALIST SPLASH) -->
   <div class="slide" style="background:#FFFFFF; color:var(--ink); flex-direction:column; align-items:center; justify-content:center; text-align:center; display:flex;">
-    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,23,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,23,20,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,23,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,23,20,0.04) 1px,transparent 1px);background-size:40px 40px;opacity:0.3;z-index:1;"></div>
     
     <!-- Flexbox container set to justify-content: center and tight gap -->
     <div style="z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; max-width: 110; gap: 8px;">
@@ -256,9 +256,9 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
     <div class="sidebar-left" style="background:var(--sand);">
       <div class="eyebrow eyebrow-amber">The Bottleneck</div>
       <h2 class="section-head" style="font-size:28px;">Quoting is manual, slow, and expensive.</h2>
-      <p class="lead-sm" style="margin-bottom:24px;">When a factory receives an RFQ (Request for Quote), a senior engineer must stop production work to manually interpret geometry, estimate machine time, and calculate costs to generate a <strong>Bill of Quantities (BoQ)</strong>. This manual delay costs them contracts.</p>
+      <p class="lead-sm" style="margin-bottom:24px;">When a factory receives an RFQ (Request for Quote), a senior engineer must stop production work to manually interpret geometry, estimate machine time, and compute cost. This takes hours. Mistakes are common. Customers disappear.</p>
       <div class="divider"></div>
-      <div class="quote-text">"We lose orders every single week simply because our quote comes back too late."<br><span style="font-size:13px;color:var(--stone);font-family:'DM Sans',sans-serif;font-style:normal;margin-top:8px;display:block;font-weight:500;">— Factory Operator, Kaoshiung</span></div>
+      <div class="quote-text">"We lose orders every single week simply because our quote comes back too late."<br><span style="font-size:13px;color:var(--stone);font-family:'DM Sans',sans-serif;font-style:normal;font-weight:400;">— Precision SME Owner, Kaohsiung</span></div>
     </div>
     <div class="sidebar-right">
       <span class="slide-label">Value Creation Engine</span>
@@ -352,7 +352,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
       </div>
       <div class="card-sand" style="display:flex;flex-direction:column;justify-content:center;">
         <h3 class="card-title">SME Drawing Fallbacks</h3>
-        <p class="body-sm" style="margin-bottom:12px;">SME CAD files are not always well-structured. We solve this natively at Stage 1, using Python-OCC and LibreCAD SDK to validate and structure boundary geometry layers before execution.</p>
+        <p class="body-sm" style="margin-bottom:12px;">SME CAD files are not always well-structured. We solve this natively at Stage 1, using Python-OCC and LibreCAD SDK to validate and structure boundary representations.</p>
         <p class="body-sm">Moving forward, we are building a proprietary fallback library of Parasolid models based on specific historical part types to guarantee 100% processing uptime.</p>
       </div>
     </div>
@@ -363,13 +363,13 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
     <div style="text-align:center; margin-bottom:40px;">
       <span class="slide-label">The Team & Ecosystem</span>
       <h2 class="section-head" style="margin-bottom:0;">Built by engineers. Backed by industry.</h2>
-      <p class="lead-sm" style="margin-top:12px; margin-inline:auto; max-width:600px;">We are not outsiders guessing at manufacturing problems. We built this engine to solve the specific quoting bottlenecks we have faced firsthand.</p>
+      <p class="lead-sm" style="margin-top:12px; margin-inline:auto; max-width:600px;">We are not outsiders guessing at manufacturing problems. We built this engine to solve the specific quoting bottleneck we faced.</p>
     </div>
     
     <div class="grid-2" style="margin-bottom: 24px; max-width: 1060px; margin-inline: auto; width: 100%;">
       
       <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-        <img class="portrait-img" src="/Users/telkom/Documents/antigravity/ProQuantify/Gusti_Portrait.png" alt="Gusti" style="height: 170px; margin-bottom: -5px;">
+        <img class="portrait-img" src="Gusti_Portrait.png" alt="Gusti" style="height: 170px; margin-bottom: -5px;">
         <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
           <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Risman Gustiana Wardana</h3>
           <div class="tag tag-teal" style="margin-bottom:10px;">CEO · Manufacturing Lead</div>
@@ -378,7 +378,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
       </div>
 
       <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-        <img class="portrait-img" src="/Users/telkom/Documents/antigravity/ProQuantify/Ahmad_Portrait.png" alt="Ahmad" style="height: 170px; margin-bottom: -5px;">
+        <img class="portrait-img" src="Ahmad_Portrait.png" alt="Ahmad" style="height: 170px; margin-bottom: -5px;">
         <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
           <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Ahmad Habibulloh</h3>
           <div class="tag tag-amber" style="margin-bottom:10px;">CTO · AI & Data Engineer</div>
@@ -419,7 +419,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
     <div class="mockup-container">
       <div class="mk-mobile">
         <div class="mk-header">
-          <div style="width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--teal); color:white; font-size:12px; font-family:'DM Serif Display',serif;">PQ</div>
+          <div style="width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--teal); color:white; font-size:12px; font-family:'DM Serif Display',serif; font-weight:700;">P</div>
           <div>
             <div style="font-size:14px;font-weight:700;font-family:'DM Serif Display',serif;">ProQuantify Bot</div>
             <div style="font-size:10px;color:rgba(255,255,255,0.7);">Online</div>
@@ -457,14 +457,14 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
           
           <div id="m-step3" class="mk-bubble" style="background:transparent; padding:0; display:flex; gap:8px; flex-direction:column; border:none;">
             <div class="mk-action-btn"><i class="fa-solid fa-file-pdf" style="margin-right:6px;"></i> Download BoQ PDF</div>
-            <div class="mk-action-btn" style="background:var(--cream); color:var(--teal); border:1px solid var(--teal); margin-top:0;"><i class="fa-solid fa-magnifying-glass-chart" style="margin-right:6px;"></i> Review Result</div>
+            <div class="mk-action-btn" style="background:var(--cream); color:var(--teal); border:1px solid var(--teal); margin-top:0;"><i class="fa-solid fa-magnifying-glass-chart" style="margin-right:6px;"></i> Review Details</div>
           </div>
         </div>
       </div>
 
       <div class="mk-web">
         <div class="mk-web-nav">
-          <span style="font-size:11px;background:var(--teal);color:white;padding:4px 8px;border-radius:4px;margin-right:12px;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:0.05em;">PRO</span>
+          <span style="font-size:11px;background:var(--teal);color:white;padding:4px 8px;border-radius:4px;margin-right:12px;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:0.05em;">PRODUCTION</span>
           Enterprise Operator Dashboard
         </div>
         <div class="mk-web-body">
@@ -554,37 +554,37 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
           <!-- Customer -->
           <div class="card-sand" style="padding:24px;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--navy);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-users-viewfinder"></i></div>
+              <div style="width:36px;height:36px;background:var(--navy);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-users"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Customer</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Precision SMEs.</strong> Overwhelmed by high-mix, low-volume orders and manual BoQ generation. They completely lack IT budgets for heavy ERP software.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Precision SMEs.</strong> Overwhelmed by high-mix, low-volume orders and manual BoQ generation. They completely lack IT infrastructure.</p>
           </div>
 
           <!-- Brand -->
           <div class="card-sand" style="padding:24px;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--amber);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-award"></i></div>
+              <div style="width:36px;height:36px;background:var(--amber);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-sparkles"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Brand</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>The Pocket Consultant.</strong> A lightweight, highly intelligent sidekick that empowers sales engineers rather than acting as a disruptive admin system.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>The Pocket Consultant.</strong> A lightweight, highly intelligent sidekick that empowers sales engineers rather than replacing them.</p>
           </div>
 
           <!-- Touch Point -->
           <div class="card-sand" style="padding:24px;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--teal);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-mobile-screen"></i></div>
+              <div style="width:36px;height:36px;background:var(--teal);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-mobile"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Touch Point</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Native Messaging.</strong> Zero app installations. Operators simply forward a CAD file via LINE or Telegram and receive a PDF BoQ instantly.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Native Messaging.</strong> Zero app installations. Operators simply forward a CAD file via LINE or Telegram and receive a BoQ in minutes.</p>
           </div>
 
           <!-- Competition -->
           <div class="card-sand" style="padding:24px;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--stone-dark);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-chess-knight"></i></div>
+              <div style="width:36px;height:36px;background:var(--stone-dark);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-crown"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Competition</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Legacy ERPs.</strong> We completely bypass the massive upfront licensing costs and 6-month onboarding periods required by traditional competitors.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Legacy ERPs.</strong> We completely bypass the massive upfront licensing costs and 6-month onboarding periods required by traditional systems.</p>
           </div>
 
         </div>
@@ -663,7 +663,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
         <div class="tl-year" style="color:var(--stone-dark);">2026</div>
         <div style="flex:1;">
           <h3 style="font-size:22px; color:var(--ink); margin-bottom:6px;">Phase 1: Test, Validate & MVP</h3>
-          <p class="body-sm" style="max-width:700px;">Deploying the initial MVP utilizing GTEP funding. Testing with 1–3 pilot factories to create absolute trust in the AI accuracy. Goal: <strong>95% BoQ Accuracy vs. Human Engineers.</strong></p>
+          <p class="body-sm" style="max-width:700px;">Deploying the initial MVP utilizing GTEP funding. Testing with 1–3 pilot factories to create absolute trust in the AI accuracy. Goal: <strong>95% quote accuracy on first try.</strong></p>
         </div>
       </div>
       
@@ -671,7 +671,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
         <div class="tl-year" style="color:var(--teal);">2027</div>
         <div style="flex:1;">
           <h3 style="font-size:22px; color:var(--teal); margin-bottom:6px;">Phase 2: Organic Launch in the South</h3>
-          <p class="body-sm" style="max-width:700px; color:var(--stone-dark);">Leveraging our existing organic network in Kaohsiung to scale reliably. Executing Go-To-Market via ecosystem partnerships and onboarding 30–50 mid-tier factories across Southern Taiwan.</p>
+          <p class="body-sm" style="max-width:700px; color:var(--stone-dark);">Leveraging our existing organic network in Kaohsiung to scale reliably. Executing Go-To-Market via ecosystem partnerships with supplier networks.</p>
         </div>
       </div>
       
@@ -679,7 +679,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
         <div class="tl-year" style="color:white;">2028+</div>
         <div style="flex:1;">
           <h3 style="font-size:22px; color:white; margin-bottom:6px;">Phase 3: Northward Expansion & Enterprise Scale</h3>
-          <p class="body-sm" style="max-width:700px; color:rgba(255,255,255,0.7);">Expanding from our Southern stronghold into the Northern industrial hubs. Selling top-down Enterprise licenses to parent companies, mandating ProQuantify usage across their sub-contractor networks.</p>
+          <p class="body-sm" style="max-width:700px; color:rgba(255,255,255,0.7);">Expanding from our Southern stronghold into the Northern industrial hubs. Selling top-down Enterprise licenses to parent organizations and tier-1 manufacturers.</p>
         </div>
       </div>
     </div>
@@ -741,7 +741,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 
   <!-- SLIDE 10: CLOSING (CLEAN & IMPACTFUL) -->
   <div class="slide slide-full" style="background:var(--navy); color:white; align-items:center; justify-content:center; text-align:center; padding: 60px 80px;">
-    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px;opacity:0.3;z-index:1;"></div>
     
     <div style="position:relative; z-index:2; max-width: 900px;">
       
@@ -754,7 +754,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
       </p>
       
       <div style="display:flex; justify-content:center;">
-        <div style="padding:14px 32px;background:var(--teal);border-radius:8px;font-size:15px;color:white;font-weight:700; cursor:pointer; letter-spacing: 0.02em; display:flex; align-items:center; gap: 10px;">
+        <div style="padding:14px 32px;background:var(--teal);border-radius:8px;font-size:15px;color:white;font-weight:700; cursor:pointer; letter-spacing: 0.02em; display:flex; align-items:center; gap:8px;">
           <i class="fa-solid fa-envelope"></i> ask@proquantify.io
         </div>
       </div>

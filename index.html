@@ -220,15 +220,57 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 <div class="deck">
   <div class="progress" id="progress"></div>
 
-  <!-- SLIDE 1: WHAT — Opening (MINIMALIST SPLASH) -->
-  <div class="slide" style="background:#FFFFFF; color:var(--ink); flex-direction:column; align-items:center; justify-content:center; text-align:center; display:flex;">
+  <!-- SLIDE 1: WHAT + WHO — Opening and Builders -->
+  <div class="slide" style="background:#FFFFFF; color:var(--ink); flex-direction:column; align-items:center; justify-content:flex-start; text-align:center; display:flex; padding: 52px 72px 68px;">
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,23,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,23,20,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
     
-    <div style="z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; max-width: 800px; gap: 8px;">
-      <img src="ProQuantify_Logo.png" alt="ProQuantify Logo" style="max-height: 160px; width: auto; object-fit: contain; display: block;">
-      <h1 style="font-family:'DM Sans',sans-serif; font-size: 20px; line-height: 1.5; font-weight: 400; color: var(--stone-dark); margin: 0; padding: 0;">
+    <div style="z-index:2; display:flex; flex-direction:column; align-items:center; width: 100%; max-width: 1120px;">
+      <img src="ProQuantify_Logo.png" alt="ProQuantify Logo" style="max-height: 108px; width: auto; object-fit: contain; display: block; margin-bottom: 8px;">
+      <h1 style="font-family:'DM Sans',sans-serif; font-size: 18px; line-height: 1.45; font-weight: 400; color: var(--stone-dark); margin: 0; padding: 0;">
         Pocket consultant to switch CAD file to accurate business quote within minutes.
       </h1>
+      <div style="width: 84px; height: 2px; background: var(--teal); margin: 24px 0 18px;"></div>
+      <span class="slide-label" style="margin-bottom:6px;">The Team & Ecosystem</span>
+      <h2 class="section-head" style="font-size:30px; margin-bottom:8px;">Built by engineers. Backed by industry.</h2>
+      <p class="lead-sm" style="margin-inline:auto; max-width:720px; margin-bottom: 22px;">We built this engine to solve the specific quoting bottlenecks we have faced firsthand.</p>
+
+      <div class="grid-2" style="width:100%; gap:14px; margin-bottom:14px;">
+        <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 26px; overflow: hidden; height: 142px; position: relative; text-align:left;">
+          <img class="portrait-img" src="Gusti_Portrait.png" alt="Gusti" style="height: 142px; margin-bottom: -5px;">
+          <div style="padding: 18px 0 20px 18px; z-index: 2; position:relative;">
+            <h3 class="card-title" style="margin-bottom:5px; font-size:18px;">Risman Gustiana Wardana</h3>
+            <div class="tag tag-teal" style="margin-bottom:8px;">Chief Executive Officer</div>
+            <p class="body-sm" style="font-size:12px;">Specializes in Intelligent Manufacturing and translates factory bottlenecks into software features.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 26px; overflow: hidden; height: 142px; position: relative; text-align:left;">
+          <img class="portrait-img" src="Ahmad_Portrait.png" alt="Ahmad" style="height: 142px; margin-bottom: -5px;">
+          <div style="padding: 18px 0 20px 18px; z-index: 2; position:relative;">
+            <h3 class="card-title" style="margin-bottom:5px; font-size:18px;">Ahmad Habibulloh</h3>
+            <div class="tag tag-amber" style="margin-bottom:8px;">Chief Technology Officer</div>
+            <p class="body-sm" style="font-size:12px;">Architects the extraction pipeline that translates raw STEP files into pricing data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="width:100%; gap:14px; text-align:left;">
+        <div class="card" style="padding: 16px 20px;">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Yuh-Shying Gau</div>
+          <div style="font-size:12px;color:var(--stone-dark);">Industry and Technical Advisor</div>
+        </div>
+        <div class="card" style="padding: 16px 20px;">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Jyun Ping Jhan</div>
+          <div style="font-size:12px;color:var(--stone-dark);">AI Development Advisor</div>
+        </div>
+        <div class="card" style="border: 2px solid var(--teal); background: var(--teal-light); padding: 16px 20px; display:flex; align-items:center; justify-content:space-between;">
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--teal);margin-bottom:4px;">Strategic Alliance</div>
+            <div style="font-size:12px;color:var(--teal);opacity:0.8;font-weight:500;">Major Ecosystem Partner</div>
+          </div>
+          <i class="fa-solid fa-handshake-angle" style="font-size: 24px; color: var(--teal);"></i>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -335,55 +377,6 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
         <h3 class="card-title">SME Drawing Fallbacks</h3>
         <p class="body-sm" style="margin-bottom:12px;">We solve unstructured drawing issues by Python-OCC and LibreCAD SDK to validate and structure boundary geometry before execution.</p>
         <p class="body-sm">Then, we build a library of Parasolid models based on historical part types to enhance processing uptime.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 4: WHO — Team -->
-  <div class="slide slide-full" style="justify-content: center; padding-top: 60px;">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="slide-label">The Team & Ecosystem</span>
-      <h2 class="section-head" style="margin-bottom:0;">Built by engineers. Backed by industry.</h2>
-      <p class="lead-sm" style="margin-top:12px; margin-inline:auto; max-width:600px;">We are not outsiders guessing at manufacturing problems. We built this engine to solve the specific quoting bottlenecks we have faced firsthand.</p>
-    </div>
-    
-    <div class="grid-2" style="margin-bottom: 24px; max-width: 1060px; margin-inline: auto; width: 100%;">
-      
-      <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-        <img class="portrait-img" src="https://mzbulloh.github.io/ProQuantify/Gusti_Portrait.png" alt="Gusti" style="height: 170px; margin-bottom: -5px;">
-        <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
-          <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Risman Gustiana Wardana</h3>
-          <div class="tag tag-teal" style="margin-bottom:10px;">Chief Executive Officer
-          </div>
-          <p class="body-sm" style="font-size:12px;">Specializes in Intelligent Manufacturing. Translates complex factory floor bottlenecks into actionable software features.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-        <img class="portrait-img" src="https://mzbulloh.github.io/ProQuantify/Ahmad_Portrait.png" alt="Ahmad" style="height: 170px; margin-bottom: -5px;">
-        <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
-          <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Ahmad Habibulloh</h3>
-          <div class="tag tag-amber" style="margin-bottom:10px;">Chief Technology Officer  </div>
-          <p class="body-sm" style="font-size:12px;">The architect of the extraction pipeline translating raw STEP files into pricing data with 5 years of experience.</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="grid-3" style="max-width: 1060px; margin-inline: auto; width: 100%;">
-      <div class="card" style="padding: 20px 24px;">
-        <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Yuh-Shying Gau</div>
-        <div style="font-size:12px;color:var(--stone-dark);">Industry and Technical Advisor</div>
-      </div>
-      <div class="card" style="padding: 20px 24px;">
-        <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Jyun Ping Jhan</div>
-        <div style="font-size:12px;color:var(--stone-dark);">AI Development Advisor</div>
-      </div>
-      <div class="card" style="border: 2px solid var(--teal); background: var(--teal-light); padding: 20px 24px; display:flex; align-items:center; justify-content:space-between;">
-        <div>
-            <div style="font-size:15px;font-weight:700;color:var(--teal);margin-bottom:4px;">Strategic Alliance</div>
-            <div style="font-size:12px;color:var(--teal);opacity:0.8;font-weight:500;">Major Ecosystem Partner</div>
-        </div>
-        <i class="fa-solid fa-handshake-angle" style="font-size: 26px; color: var(--teal);"></i>
       </div>
     </div>
   </div>
@@ -575,105 +568,99 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
     </div>
   </div>
 
-   <!-- SLIDE 7: PRICING -->
+   <!-- SLIDE 7: PRICING + ROADMAP -->
   <div class="slide slide-full">
-    <div style="text-align:center; margin-bottom:20px;">
-      <span class="slide-label">Business Model & Monetization</span>
-      <h2 class="section-head" style="margin-bottom:0; font-size: 28px;">Accessible for SMEs. Built for Enterprise.</h2>
-    </div>
-    
-    <div class="grid-3" style="max-width: 1100px; margin-inline:auto; gap: 12px;">
-      <div class="pricing-col">
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px;">Basic Tier</h3>
-        <p class="body-sm">For independent operators needing fast answers.</p>
-        <div class="pricing-price">NT$1,500<span style="font-size:16px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
-        <div class="divider" style="margin: 12px 0;"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li><i class="fa-solid fa-check"></i> <strong>Up to 50 BoQs / Month</strong></li>
-          <li><i class="fa-solid fa-check"></i> Reads CAD, STEP, DXF, DWG</li>
-          <li><i class="fa-solid fa-check"></i> Base Price Estimation</li>
-          <li><i class="fa-solid fa-check"></i> Static Supplier Match</li>
-        </ul>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-bottom:18px;">
+      <div>
+        <span class="slide-label">Business Model & Execution Plan</span>
+        <h2 class="section-head" style="margin-bottom:0; font-size: 30px;">Accessible pricing. Clear path to scale.</h2>
       </div>
-      
-      <div class="pricing-col featured">
-        <div class="tag tag-teal" style="align-self: flex-start; margin-bottom: 12px;">Most Popular</div>
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px; color:var(--teal);">Pro Tier</h3>
-        <p class="body-sm">For growing sub-contractors handling complex BoQ requests.</p>
-        <div class="pricing-price" style="color:var(--teal);">NT$3,000<span style="font-size:16px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
-        <div class="divider" style="margin: 12px 0; background: rgba(29,122,107,0.2);"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li><i class="fa-solid fa-check"></i> <strong>Up to 300 BoQs / Month</strong></li>
-          <li><i class="fa-solid fa-check"></i> <strong>Live Time Estimation:</strong> Based on live supplier availability.</li>
-          <li><i class="fa-solid fa-check"></i> Real-time Lead Time Calculation</li>
-          <li><i class="fa-solid fa-check"></i> Professional PDF BoQ Export</li>
-        </ul>
-      </div>
-      
-      <div class="pricing-col" style="background:var(--navy); color:white; border-color:var(--navy);">
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px; color:white;">Enterprise</h3>
-        <p class="body-sm" style="color:rgba(255,255,255,0.7);">For large parent networks and tier-1 suppliers.</p>
-        <div class="pricing-price" style="color:white;">Custom<span style="font-size:16px; color:rgba(255,255,255,0.7); font-family:'DM Sans',sans-serif;">/yr</span></div>
-        <div class="divider" style="margin: 12px 0; background: rgba(255,255,255,0.1);"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> <strong>Unlimited BoQ Volume</strong></li>
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Installed locally on secure factory servers.</li>
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Direct API integrations for legacy ERPs.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Trust Layer Callout -->
-    <div style="margin-top:16px; display:grid; grid-template-columns: 1.1fr 1.9fr; gap:12px; max-width:1100px; margin-inline:auto;">
-      <div style="background:rgba(196,123,43,0.1); border:1px solid rgba(196,123,43,0.3); padding:10px 18px; border-radius:12px; font-size:12px; color:var(--amber); font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px; text-align:center;">
+      <div style="font-size:12px;color:var(--amber);font-weight:700;display:flex;align-items:center;gap:8px;">
         <i class="fa-solid fa-gift"></i> 14-Day Free Trial · Up to 10 Free BoQs
       </div>
-
-      <div style="background:var(--sand); border:1px solid var(--border-med); padding:10px 18px; border-radius:12px; display:flex; align-items:center; gap:14px;">
-        <div style="width:34px;height:34px;border-radius:8px;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <i class="fa-solid fa-file-shield"></i>
+    </div>
+    
+    <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:18px; flex:1; min-height:0;">
+      <div style="display:flex; flex-direction:column; gap:12px; min-height:0;">
+        <div class="grid-3" style="gap:10px; flex:1;">
+          <div class="pricing-col" style="border-radius:12px; padding:18px 16px;">
+            <h3 class="card-title" style="font-size:18px; margin-bottom:4px;">Basic Tier</h3>
+            <p class="body-sm" style="font-size:12px;">For independent operators.</p>
+            <div class="pricing-price" style="font-size:30px;">NT$1,500<span style="font-size:13px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
+            <div class="divider" style="margin: 10px 0;"></div>
+            <ul class="check-list" style="margin-top: 8px; flex: 1;">
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> <strong>Up to 50 BoQs / Month</strong></li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Reads CAD, STEP, DXF, DWG</li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Base Price Estimation</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-col featured" style="border-radius:12px; padding:18px 16px; transform:none;">
+            <div class="tag tag-teal" style="align-self: flex-start; margin-bottom: 10px;">Most Popular</div>
+            <h3 class="card-title" style="font-size:18px; margin-bottom:4px; color:var(--teal);">Pro Tier</h3>
+            <p class="body-sm" style="font-size:12px;">For complex BoQ requests.</p>
+            <div class="pricing-price" style="font-size:30px; color:var(--teal);">NT$3,000<span style="font-size:13px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
+            <div class="divider" style="margin: 10px 0; background: rgba(29,122,107,0.2);"></div>
+            <ul class="check-list" style="margin-top: 8px; flex: 1;">
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> <strong>Up to 300 BoQs / Month</strong></li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Live lead-time estimation</li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Professional PDF export</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-col" style="background:var(--navy); color:white; border-color:var(--navy); border-radius:12px; padding:18px 16px;">
+            <h3 class="card-title" style="font-size:18px; margin-bottom:4px; color:white;">Enterprise</h3>
+            <p class="body-sm" style="font-size:12px;color:rgba(255,255,255,0.7);">For parent networks.</p>
+            <div class="pricing-price" style="font-size:30px;color:white;">Custom<span style="font-size:13px; color:rgba(255,255,255,0.7); font-family:'DM Sans',sans-serif;">/yr</span></div>
+            <div class="divider" style="margin: 10px 0; background: rgba(255,255,255,0.1);"></div>
+            <ul class="check-list" style="margin-top: 8px; flex: 1;">
+              <li style="font-size:12px;margin-bottom:9px;color:white;"><i class="fa-solid fa-check" style="color:white;"></i> <strong>Unlimited BoQ Volume</strong></li>
+              <li style="font-size:12px;margin-bottom:9px;color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Secure local deployment</li>
+              <li style="font-size:12px;margin-bottom:9px;color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Legacy ERP APIs</li>
+            </ul>
+          </div>
         </div>
-        <div style="text-align:left;">
-          <div style="font-size:13px;font-weight:800;color:var(--ink);margin-bottom:2px;">Secure Drawing Vault with Non-Disclosure Agreement</div>
-          <div style="font-size:11.5px;color:var(--stone-dark);line-height:1.35;">
-            Engineering drawings are treated as confidential client intellectual property under non-disclosure agreement, restricted workspace access, retention control, and enterprise on-premises deployment when required.
+
+        <div style="background:var(--sand); border:1px solid var(--border-med); padding:12px 16px; border-radius:12px; display:flex; align-items:center; gap:12px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fa-solid fa-file-shield"></i>
+          </div>
+          <div style="text-align:left;">
+            <div style="font-size:12px;font-weight:800;color:var(--ink);margin-bottom:2px;">Secure Drawing Vault with Non-Disclosure Agreement</div>
+            <div style="font-size:11px;color:var(--stone-dark);line-height:1.35;">Confidential drawings stay under restricted workspace access, retention control, and enterprise on-premises deployment when required.</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- SLIDE 8: ROADMAP -->
-  <div class="slide slide-full">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;">
-      <div>
-        <span class="slide-label">Execution Plan</span>
-        <h2 class="section-head" style="margin-bottom:0;">Roadmap to Scale</h2>
-      </div>
-    </div>
-    
-    <div style="display:flex; flex-direction:column; justify-content:center; flex:1;">
-      <div class="tl-row" style="background:var(--cream); border:1px solid var(--border);">
-        <div class="tl-year" style="color:var(--stone-dark);">2026</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:var(--ink); margin-bottom:6px;">Phase 1: Test, Validate & MVP</h3>
-          <p class="body-sm" style="max-width:700px;">Deploying the initial MVP utilizing GTEP funding. Testing with 1–3 pilot factories to create absolute trust in the AI accuracy. Goal: <strong>95% BoQ Accuracy vs. Human Engineers.</strong></p>
+      <div style="display:flex; flex-direction:column; gap:10px; min-height:0;">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <span class="slide-label" style="margin:0;">Roadmap to Scale</span>
+          <i class="fa-solid fa-route" style="color:var(--teal);font-size:18px;"></i>
         </div>
-      </div>
-      
-      <div class="tl-row" style="background:var(--teal-light); border:2px solid var(--teal); box-shadow: 0 10px 30px rgba(29,122,107,0.1); transform: scale(1.02); z-index:10;">
-        <div class="tl-year" style="color:var(--teal);">2027</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:var(--teal); margin-bottom:6px;">Phase 2: Organic Launch in the South</h3>
-          <p class="body-sm" style="max-width:700px; color:var(--stone-dark);">Leveraging our existing organic network in Kaohsiung to scale reliably. Executing Go-To-Market via ecosystem partnerships and onboarding 30–50 mid-tier factories across Southern Taiwan.</p>
-        </div>
-      </div>
-      
-      <div class="tl-row" style="background:var(--navy); border:1px solid var(--navy);">
-        <div class="tl-year" style="color:white;">2028+</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:white; margin-bottom:6px;">Phase 3: Northward Expansion & Enterprise Scale</h3>
-          <p class="body-sm" style="max-width:700px; color:rgba(255,255,255,0.7);">Expanding from our Southern stronghold into the Northern industrial hubs. Selling top-down Enterprise licenses to parent companies, mandating ProQuantify usage across their sub-contractor networks.</p>
+        <div style="display:flex; flex-direction:column; gap:10px; flex:1;">
+          <div style="background:var(--cream); border:1px solid var(--border); border-radius:12px; padding:18px; display:grid; grid-template-columns:82px 1fr; gap:25px; align-items:center; flex:1;">
+            <div style="font-family:'DM Serif Display',serif;font-size:35px;color:var(--stone-dark);line-height:1;">2026</div>
+            <div>
+              <h3 style="font-size:17px; color:var(--ink); margin-bottom:5px;">Phase 1: Test, Validate & MVP</h3>
+              <p class="body-sm" style="font-size:12px;">Pilot with 1–3 factories and validate <strong>95% BoQ Accuracy vs. Human Engineers.</strong></p>
+            </div>
+          </div>
+          
+          <div style="background:var(--teal-light); border:2px solid var(--teal); border-radius:12px; padding:18px; display:grid; grid-template-columns:82px 1fr; gap:25px; align-items:center; flex:1;">
+            <div style="font-family:'DM Serif Display',serif;font-size:35px;color:var(--teal);line-height:1;">2027</div>
+            <div>
+              <h3 style="font-size:17px; color:var(--teal); margin-bottom:5px;">Phase 2: Organic Launch in the South</h3>
+              <p class="body-sm" style="font-size:12px;">Onboard 30–50 mid-tier factories across Southern Taiwan through ecosystem partnerships.</p>
+            </div>
+          </div>
+          
+          <div style="background:var(--navy); border:1px solid var(--navy); border-radius:12px; padding:18px; display:grid; grid-template-columns:82px 1fr; gap:25px; align-items:center; flex:1;">
+            <div style="font-family:'DM Serif Display',serif;font-size:35px;color:white;line-height:1;">2028+</div>
+            <div>
+              <h3 style="font-size:17px; color:white; margin-bottom:5px;">Phase 3: Enterprise Scale</h3>
+              <p class="body-sm" style="font-size:12px;color:rgba(255,255,255,0.7);">Expand north and sell top-down Enterprise licenses to parent company networks.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -758,7 +745,7 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
   <!-- FOOTER -->
   <div class="foot" id="main-foot">
     <div class="foot-brand">ProQuantify</div>
-    <div class="foot-num" id="slideNum">1 / 10</div>
+    <div class="foot-num" id="slideNum">1 / 8</div>
     <div class="foot-nav">
       <button class="nav-btn" onclick="nav(-1)"><i class="fa-solid fa-arrow-left"></i></button>
       <button class="nav-btn" onclick="nav(1)"><i class="fa-solid fa-arrow-right"></i></button>
@@ -782,7 +769,7 @@ function render() {
   progress.style.width = ((cur + 1) / slides.length * 100) + '%';
   slideNum.textContent = (cur + 1) + ' / ' + slides.length;
   
-  if(cur === 9 || cur === 0) {
+  if(cur === slides.length - 1 || cur === 0) {
       footer.classList.add('foot-dark');
   } else {
       footer.classList.remove('foot-dark');

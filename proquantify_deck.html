@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProQuantify | Pitch Deck</title>
+<title>ProQuantify Official Pitch Deck</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -39,93 +39,6 @@ body {
 .slide.active { display: flex; }
 @keyframes fadeUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
 
-/* Update the existing .flow-line class */
-.flow-line { 
-    position: absolute; 
-    top: 40px; 
-    left: 70px; 
-    right: 70px; 
-    height: 3px; 
-    background: var(--border-med); 
-    z-index: 1; 
-    overflow: hidden;
-}
-
-/* Add the moving "flow" element inside the line */
-.flow-line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 30%; /* Length of the moving "light" */
-    background: linear-gradient(90deg, transparent, var(--teal), transparent);
-    animation: flowMove 3s infinite linear;
-}
-
-@keyframes flowMove {
-    0% { left: -30%; }
-    100% { left: 100%; }
-}
-@media print {
-  @page {
-    size: 1280px 720px;
-    margin: 0;
-  }
-
-  html, body {
-    width: 1280px !important;
-    height: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    background: white !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .foot,
-  .nav-btn,
-  .demo-btn,
-  .progress {
-    display: none !important;
-  }
-
-  .deck {
-    display: block !important;
-    width: 1280px !important;
-    height: auto !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    overflow: visible !important;
-    background: transparent !important;
-  }
-
-  .slide {
-    display: flex !important;
-    position: relative !important;
-    inset: auto !important;
-    width: 1280px !important;
-    height: 720px !important;
-    page-break-after: always !important;
-    break-after: page !important;
-    overflow: hidden !important;
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-  }
-
-  .slide:last-of-type {
-    page-break-after: auto !important;
-    break-after: auto !important;
-  }
-
-  .flow-line::after {
-    animation: none !important;
-    left: 70% !important;
-  }
-}
 /* Nav */
 .foot { position: absolute; bottom: 0; left: 0; right: 0; height: 44px; background: var(--sand); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 36px; z-index: 50; }
 .foot-brand { font-size: 12px; font-weight: 700; color: var(--stone); letter-spacing: 0.04em; }
@@ -185,7 +98,9 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 
 /* Native Flow Diagram Styles */
 .flow-container { display: flex; justify-content: space-between; position: relative; margin: 40px 20px; }
-.flow-line { position: absolute; top: 40px; left: 70px; right: 70px; height: 3px; background: var(--border-med); z-index: 1; }
+.flow-line { position: absolute; top: 40px; left: 70px; right: 70px; height: 3px; background: var(--border-med); z-index: 1; overflow: hidden; }
+.flow-line::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 30%; background: linear-gradient(90deg, transparent, var(--teal), transparent); animation: flowMove 3s infinite linear; }
+@keyframes flowMove { 0% { left: -30%; } 100% { left: 100%; } }
 .flow-node { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center; }
 .flow-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--cream); border: 3px solid var(--border-med); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--stone); margin-bottom: 16px; box-shadow: 0 8px 16px rgba(0,0,0,0.04); transition: all 0.3s; position: relative; }
 .flow-node.active .flow-icon { background: var(--navy); border-color: var(--navy); color: white; box-shadow: 0 12px 24px rgba(27,42,59,0.2); transform: scale(1.05); }
@@ -195,13 +110,24 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 .flow-step-num { position: absolute; top: -8px; right: -8px; background: var(--amber); color: white; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid var(--cream); z-index: 3; }
 .flow-node.active .flow-step-num { background: var(--teal); }
 
-/* Profile Portraits */
-.portrait-img {
-    height: 170px;
-    width: auto;
-    object-fit: contain;
-    display: block;
+/* --- Animation: Step Flow Light Sweep --- */
+.flow-node .flow-icon::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top: 2px solid rgba(255,255,255,0.6);
+    animation: sweep 2s infinite linear;
+    pointer-events: none;
 }
+@keyframes sweep {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Profile Portraits */
+.portrait-img { height: 190px; width: auto; object-fit: contain; mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%); }
 
 /* Inline Mockup CSS */
 .mockup-container { display: flex; gap: 24px; height: 460px; margin-top: 20px; }
@@ -227,224 +153,8 @@ ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
 .demo-btn:hover { background: var(--teal-mid); }
 .w-action-btn { flex: 1; background: var(--navy); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
 .w-action-btn:disabled { background: var(--sand-mid); color: var(--stone); cursor: not-allowed; border: 1px solid var(--border); }
-</style>
-</head>
-<body>
-<div class="deck">
-  <div class="progress" id="progress"></div>
 
-  <!-- SLIDE 1: WHAT — Opening (MINIMALIST SPLASH) -->
-  <div class="slide" style="background:#FFFFFF; color:var(--ink); flex-direction:column; align-items:center; justify-content:center; text-align:center; display:flex;">
-    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,23,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,23,20,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
-    
-    <!-- Flexbox container set to justify-content: center and tight gap -->
-    <div style="z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; max-width: 110; gap: 8px;">
-      
-      <img src="ProQuantify_Logo.png" alt="ProQuantify Logo" style="max-height: 110px; width: auto; object-fit: contain; display: block;">
-      
-      <h1 style="font-family:'DM Sans',sans-serif; font-size: 20px; line-height: 1.5; font-weight: 400; color: var(--stone-dark); margin: 0; padding: 0;">
-        Pocket consultant to switch CAD file to accurate business quote within minutes.
-      </h1>
-      
-    </div>
-  </div>
-
-  <!-- SLIDE 2: WHY — The Problem -->
-  <div class="slide slide-sidebar">
-    <div class="sidebar-left" style="background:var(--sand);">
-      <div class="eyebrow eyebrow-amber">The Bottleneck</div>
-      <h2 class="section-head" style="font-size:28px;">Quoting is manual, slow, and expensive.</h2>
-      <p class="lead-sm" style="margin-bottom:24px;">When a factory receives an RFQ (Request for Quote), a senior engineer must stop production work to manually interpret geometry, estimate machine time, and calculate costs to generate a <strong>Bill of Quantities (BoQ)</strong>. This manual delay costs them contracts.</p>
-      <div class="divider"></div>
-      <div class="quote-text">"We lose orders every single week simply because our quote comes back too late."<br><span style="font-size:13px;color:var(--stone);font-family:'DM Sans',sans-serif;font-style:normal;margin-top:8px;display:block;font-weight:500;">— Factory Operator, Kaoshiung</span></div>
-    </div>
-    <div class="sidebar-right">
-      <span class="slide-label">Value Creation Engine</span>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div class="grid-2">
-          <div class="card-teal">
-            <div class="tag tag-teal" style="margin-bottom:12px;">The Target User</div>
-            <h3 class="card-title">SME Sub-contractors</h3>
-            <p class="body-sm">Small factories receiving 10–30 quote requests weekly. They lack heavy ERP systems, relying entirely on memory, Excel, and legacy communication.</p>
-          </div>
-          <div class="card-amber">
-            <div class="tag tag-amber" style="margin-bottom:12px;">The Advantage</div>
-            <h3 class="card-title">Instant Scalability</h3>
-            <p class="body-sm">With ProQuantify, junior sales staff can reply with an accurate BoQ in under 10 minutes, protecting profit margins and securing client lock-in.</p>
-          </div>
-        </div>
-        <div class="card" style="border-left:4px solid var(--navy);">
-          <div class="tag tag-navy" style="margin-bottom:16px;">Core Infrastructure & Capabilities</div>
-          <div class="grid-3" style="gap:12px;">
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-microchip" style="margin-right:6px;"></i> File Ingestion</div>
-              <p class="body-sm" style="font-size:12px;">Instantly parses dimensions and tolerances from CAD, STEP, DXF, and DWG inputs.</p>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-calculator" style="margin-right:6px;"></i> Dynamic Pricing</div>
-              <p class="body-sm" style="font-size:12px;">Calculates raw material costs based on live market indices and volume parameters.</p>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-stopwatch" style="margin-right:6px;"></i> Time Mapping</div>
-              <p class="body-sm" style="font-size:12px;">Maps milling, turning, and casting times to real-time machine availability.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 3: HOW — The Process (NATIVE FLOW DIAGRAM) -->
-  <div class="slide slide-full">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-      <div>
-        <span class="slide-label">Technical Pipeline</span>
-        <h2 class="section-head" style="margin-bottom:0;">The 5-Stage Parasolid Architecture</h2>
-      </div>
-    </div>
-    
-    <div class="flow-container">
-      <div class="flow-line"></div>
-      
-      <div class="flow-node highlight">
-        <div class="flow-step-num">1</div>
-        <div class="flow-icon"><i class="fa-solid fa-file-import"></i></div>
-        <div class="flow-title">File Ingestion</div>
-        <div class="flow-desc">Parses drawing layers and GD&T from DWG, DXF, STEP into a neutral B-Rep solid memory model.</div>
-      </div>
-      
-      <div class="flow-node highlight">
-        <div class="flow-step-num">2</div>
-        <div class="flow-icon"><i class="fa-solid fa-cube"></i></div>
-        <div class="flow-title">Geometry Kernel</div>
-        <div class="flow-desc">OCCT / Parasolid engine maps exact boundary geometry (volumes, surface areas, wall thickness).</div>
-      </div>
-
-      <div class="flow-node highlight">
-        <div class="flow-step-num">3</div>
-        <div class="flow-icon"><i class="fa-solid fa-microchip"></i></div>
-        <div class="flow-title">Feature Extraction</div>
-        <div class="flow-desc">ResNet ML & rule classifiers interrogate B-Rep to detect specific features (holes, threads, Ra values).</div>
-      </div>
-
-      <div class="flow-node active">
-        <div class="flow-step-num">4</div>
-        <div class="flow-icon"><i class="fa-solid fa-gears"></i></div>
-        <div class="flow-title">Decision Engine</div>
-        <div class="flow-desc">Maps sequences via rule/LLM layers, multiplying by material & localized setup costs.</div>
-      </div>
-
-      <div class="flow-node highlight">
-        <div class="flow-step-num">5</div>
-        <div class="flow-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-        <div class="flow-title">BoQ Assembly</div>
-        <div class="flow-desc">Claude API formats structured JSON into client-ready PDF BoQs and Excel procurement plans.</div>
-      </div>
-    </div>
-
-    <div class="grid-2" style="flex:1; margin-top: 10px;">
-      <div class="card" style="display:flex;flex-direction:column;justify-content:center; border-left: 4px solid var(--teal);">
-        <h3 class="card-title">Deterministic, Not Guessed.</h3>
-        <p class="body-sm" style="margin-bottom:12px;">Standard AI forces engineers to guess if a shaft is 32mm or 35mm from a flat image. <strong>We use the Parasolid path. The geometry is the ground truth.</strong></p>
-        <p class="body-sm">A detected blind hole of 8mm diameter at 20mm depth with an M8 thread maps directly to a CNC tapping cycle with known tool and setup costs—creating a traceable, defensible quote.</p>
-      </div>
-      <div class="card-sand" style="display:flex;flex-direction:column;justify-content:center;">
-        <h3 class="card-title">SME Drawing Fallbacks</h3>
-        <p class="body-sm" style="margin-bottom:12px;">SME CAD files are not always well-structured. We solve this natively at Stage 1, using Python-OCC and LibreCAD SDK to validate and structure boundary geometry layers before execution.</p>
-        <p class="body-sm">Moving forward, we are building a proprietary fallback library of Parasolid models based on specific historical part types to guarantee 100% processing uptime.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 4: WHO — Team -->
-  <div class="slide slide-full" style="justify-content: center; padding-top: 60px;">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="slide-label">The Team & Ecosystem</span>
-      <h2 class="section-head" style="margin-bottom:0;">Built by engineers. Backed by industry.</h2>
-      <p class="lead-sm" style="margin-top:12px; margin-inline:auto; max-width:600px;">We are not outsiders guessing at manufacturing problems. We built this engine to solve the specific quoting bottlenecks we have faced firsthand.</p>
-    </div>
-    
-    <div class="grid-2" style="margin-bottom: 24px; max-width: 1060px; margin-inline: auto; width: 100%;">
-      
-      <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-        <img class="https://github.com/mzbulloh/ProQuantify/blob/f1c8b0ae57d36c73eac05e9163ed645422703184/Gusti_Portrait.png.png" alt="Gusti" style="height: 170px; margin-bottom: -5px;">
-        <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
-          <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Risman Gustiana Wardana</h3>
-          <div class="tag tag-teal" style="margin-bottom:10px;">Chief Executive Officer</div>
-          <p class="body-sm" style="font-size:12px;">Specializes in Intelligent Manufacturing. Translates complex factory floor bottlenecks into actionable software features.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 32px; overflow: hidden; height: 170px; position: relative;">
-        <img class="<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProQuantify | Pitch Deck</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-:root {
-  --cream: #FDFAF5;
-  --sand: #F5F0E8;
-  --sand-mid: #EDE6D6;
-  --sand-dark: #D4CABC;
-  --stone: #8A8278;
-  --stone-dark: #5C5650;
-  --ink: #1A1714;
-  --navy: #1B2A3B;
-  --navy-light: #2C4059;
-  --teal: #1D7A6B;
-  --teal-light: #E8F5F2;
-  --teal-mid: #2A9E8B;
-  --amber: #C47B2B;
-  --amber-light: #FEF3E2;
-  --border: rgba(26,23,20,0.1);
-  --border-med: rgba(26,23,20,0.15);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--sand); font-family: 'DM Sans', sans-serif; height: 100vh; overflow: hidden; color: var(--stone-dark);
-  display: flex; align-items: center; justify-content: center;
-}
-.deck {
-  width: 1280px; height: 720px; position: relative; background: var(--cream); border-radius: 20px;
-  border: 1px solid var(--border-med); overflow: hidden; box-shadow: 0 20px 60px rgba(26,23,20,0.12), 0 4px 16px rgba(26,23,20,0.06);
-}
-.progress { position: absolute; top: 0; left: 0; height: 3px; background: var(--teal); transition: width 0.4s ease; z-index: 100; }
-.slide { display: none; position: absolute; inset: 0; animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1); }
-.slide.active { display: flex; }
-@keyframes fadeUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
-
-/* Update the existing .flow-line class */
-.flow-line { 
-    position: absolute; 
-    top: 40px; 
-    left: 70px; 
-    right: 70px; 
-    height: 3px; 
-    background: var(--border-med); 
-    z-index: 1; 
-    overflow: hidden;
-}
-
-/* Add the moving "flow" element inside the line */
-.flow-line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 30%; /* Length of the moving "light" */
-    background: linear-gradient(90deg, transparent, var(--teal), transparent);
-    animation: flowMove 3s infinite linear;
-}
-
-@keyframes flowMove {
-    0% { left: -30%; }
-    100% { left: 100%; }
-}
+/* --- Print Optimization --- */
 @media print {
   @page {
     size: 1280px 720px;
@@ -504,854 +214,169 @@ body {
     left: 70% !important;
   }
 }
-/* Nav */
-.foot { position: absolute; bottom: 0; left: 0; right: 0; height: 44px; background: var(--sand); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 36px; z-index: 50; }
-.foot-brand { font-size: 12px; font-weight: 700; color: var(--stone); letter-spacing: 0.04em; }
-.foot-num { font-size: 12px; color: var(--stone); font-weight: 500; }
-.foot-nav { display: flex; gap: 8px; }
-.nav-btn { width: 28px; height: 28px; background: transparent; border: 1px solid var(--border-med); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--stone-dark); font-size: 12px; transition: all 0.15s; }
-.nav-btn:hover { background: var(--sand-mid); }
-.foot-dark { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); }
-.foot-dark .foot-brand, .foot-dark .foot-num, .foot-dark .nav-btn { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2); }
-.foot-dark .nav-btn:hover { background: rgba(255,255,255,0.1); }
-
-/* Layouts */
-.slide-sidebar { flex-direction: row; }
-.sidebar-left { width: 340px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; padding: 52px 40px; position: relative; }
-.sidebar-right { flex: 1; padding: 52px 48px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
-.slide-full { flex-direction: column; padding: 48px 56px; }
-
-/* Typography */
-.eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
-.eyebrow-teal { color: var(--teal-mid); }
-.eyebrow-amber { color: var(--amber); }
-.eyebrow-light { color: rgba(255,255,255,0.5); }
-.slide-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone); margin-bottom: 10px; display: block; }
-h1.serif-hero { font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1.08; color: #fff; margin-bottom: 20px; }
-h2.section-head { font-family: 'DM Serif Display', serif; font-size: 34px; line-height: 1.2; color: var(--ink); margin-bottom: 12px; }
-h3.card-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-.lead { font-size: 17px; line-height: 1.65; color: var(--stone-dark); font-weight: 300; max-width: 520px; }
-.lead-sm { font-size: 14px; line-height: 1.6; color: var(--stone-dark); font-weight: 400; }
-.body-sm { font-size: 13px; line-height: 1.55; color: var(--stone-dark); }
-.quote-text { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1.4; color: var(--navy); font-style: italic; }
-
-/* Components */
-.card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
-.card-sand { background: var(--sand); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
-.card-teal { background: var(--teal-light); border: 1px solid rgba(29,122,107,0.2); border-radius: 12px; padding: 24px; }
-.card-amber { background: var(--amber-light); border: 1px solid rgba(196,123,43,0.2); border-radius: 12px; padding: 24px; }
-.tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 4px; }
-.tag-teal { background: var(--teal-light); color: var(--teal); }
-.tag-amber { background: var(--amber-light); color: var(--amber); }
-.tag-navy { background: rgba(27,42,59,0.08); color: var(--navy); }
-.stat-big { font-family: 'DM Serif Display', serif; font-size: 44px; color: var(--ink); line-height: 1; margin-bottom: 8px; }
-.divider { height: 1px; background: var(--border); margin: 20px 0; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-ul.check-list { list-style: none; padding: 0; margin-top: 12px; }
-ul.check-list li { font-size: 13px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; color: var(--stone-dark); line-height: 1.4; }
-ul.check-list li i { color: var(--teal); margin-top: 3px; font-size: 14px; }
-
-/* Pricing Cards */
-.pricing-col { display: flex; flex-direction: column; background: var(--cream); border: 1px solid var(--border); border-radius: 16px; padding: 24px 20px; }
-.pricing-col.featured { border: 2px solid var(--teal); background: var(--teal-light); transform: scale(1.02); box-shadow: 0 10px 30px rgba(29,122,107,0.1); }
-.pricing-price { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--ink); margin: 12px 0; line-height: 1; }
-
-/* Timeline Stack */
-.tl-row { display: flex; gap: 24px; align-items: center; border-radius: 16px; padding: 24px 32px; margin-bottom: 16px; }
-.tl-year { font-family: 'DM Serif Display', serif; font-size: 48px; width: 140px; flex-shrink: 0; line-height: 1; }
-
-/* Native Flow Diagram Styles */
-.flow-container { display: flex; justify-content: space-between; position: relative; margin: 40px 20px; }
-.flow-line { position: absolute; top: 40px; left: 70px; right: 70px; height: 3px; background: var(--border-med); z-index: 1; }
-.flow-node { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center; }
-.flow-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--cream); border: 3px solid var(--border-med); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--stone); margin-bottom: 16px; box-shadow: 0 8px 16px rgba(0,0,0,0.04); transition: all 0.3s; position: relative; }
-.flow-node.active .flow-icon { background: var(--navy); border-color: var(--navy); color: white; box-shadow: 0 12px 24px rgba(27,42,59,0.2); transform: scale(1.05); }
-.flow-node.highlight .flow-icon { background: var(--teal); border-color: var(--teal); color: white; box-shadow: 0 12px 24px rgba(29,122,107,0.2); transform: scale(1.05); }
-.flow-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
-.flow-desc { font-size: 12px; color: var(--stone-dark); line-height: 1.4; }
-.flow-step-num { position: absolute; top: -8px; right: -8px; background: var(--amber); color: white; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid var(--cream); z-index: 3; }
-.flow-node.active .flow-step-num { background: var(--teal); }
-
-/* Profile Portraits */
-.portrait-img {
-    height: 190px;
-    width: auto;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-}
-
-/* Inline Mockup CSS */
-.mockup-container { display: flex; gap: 24px; height: 460px; margin-top: 20px; }
-.mk-mobile { width: 300px; background: var(--cream); border-radius: 16px; border: 1px solid var(--border-med); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.mk-header { background: var(--navy); color: white; padding: 16px; display: flex; align-items: center; gap: 12px; }
-.mk-chat { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; background: var(--sand); }
-.mk-bubble { max-width: 90%; padding: 12px; border-radius: 8px; font-size: 13px; line-height: 1.4; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; }
-.mk-bubble.show { opacity: 1; transform: translateY(0); }
-.mk-bot { background: var(--cream); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 2px; }
-.mk-user { background: var(--teal-light); color: var(--teal); border: 1px solid rgba(29,122,107,0.2); align-self: flex-end; border-bottom-right-radius: 2px; }
-.mk-card { background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 10px; margin-top: 6px; font-size: 12px; }
-.mk-action-btn { background: var(--navy); color: white; padding: 10px; border-radius: 6px; text-align: center; cursor: pointer; font-size: 12px; margin-top: 8px; font-weight: 500; }
-
-.mk-web { flex: 1; background: var(--cream); border-radius: 16px; border: 1px solid var(--border-med); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.mk-web-nav { height: 60px; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); }
-.mk-web-body { display: flex; flex: 1; }
-.mk-panel { padding: 24px; flex: 1; border-right: 1px solid var(--border); display: flex; flex-direction: column; }
-.mk-panel:last-child { border-right: none; background: var(--sand); }
-.mk-box { background: var(--sand); border: 1px solid var(--border); border-radius: 8px; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 12px; color: var(--stone); position: relative; overflow: hidden;}
-.mk-log { font-family: monospace; font-size: 12px; color: var(--stone-dark); padding: 6px 0; opacity: 0; transition: opacity 0.3s; }
-.mk-log.show { opacity: 1; }
-.demo-btn { background: var(--teal); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 13px; }
-.demo-btn:hover { background: var(--teal-mid); }
-.w-action-btn { flex: 1; background: var(--navy); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
-.w-action-btn:disabled { background: var(--sand-mid); color: var(--stone); cursor: not-allowed; border: 1px solid var(--border); }
 </style>
 </head>
 <body>
 <div class="deck">
   <div class="progress" id="progress"></div>
 
-  <!-- SLIDE 1: WHAT — Opening (MINIMALIST SPLASH) -->
-  <div class="slide" style="background:#FFFFFF; color:var(--ink); flex-direction:column; align-items:center; justify-content:center; text-align:center; display:flex;">
+  <!-- SLIDE 1: WHAT + WHO — Opening and Builders -->
+  <div class="slide" style="background:#FFFFFF; color:var(--ink); flex-direction:column; align-items:center; justify-content:flex-start; text-align:center; display:flex; padding: 52px 72px 68px;">
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(26,23,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,23,20,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
     
-    <!-- Flexbox container set to justify-content: center and tight gap -->
-    <div style="z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; max-width: 110; gap: 8px;">
-      
-      <img src="ProQuantify_Logo.png" alt="ProQuantify Logo" style="max-height: 110px; width: auto; object-fit: contain; display: block;">
-      
-      <h1 style="font-family:'DM Sans',sans-serif; font-size: 20px; line-height: 1.5; font-weight: 400; color: var(--stone-dark); margin: 0; padding: 0;">
+    <div style="z-index:2; display:flex; flex-direction:column; align-items:center; width: 100%; max-width: 1120px;">
+      <img src="ProQuantify_Logo.png" alt="ProQuantify Logo" style="max-height: 108px; width: auto; object-fit: contain; display: block; margin-bottom: 8px;">
+      <h1 style="font-family:'DM Sans',sans-serif; font-size: 18px; line-height: 1.45; font-weight: 400; color: var(--stone-dark); margin: 0; padding: 0;">
         Pocket consultant to switch CAD file to accurate business quote within minutes.
       </h1>
-      
-    </div>
-  </div>
+      <div style="width: 84px; height: 2px; background: var(--teal); margin: 24px 0 18px;"></div>
+      <span class="slide-label" style="margin-bottom:6px;">The Team & Ecosystem</span>
+      <h2 class="section-head" style="font-size:30px; margin-bottom:8px;">Built by engineers. Backed by industry.</h2>
+      <p class="lead-sm" style="margin-inline:auto; max-width:720px; margin-bottom: 22px;">We built this engine to solve the specific quoting bottlenecks we have faced firsthand.</p>
 
-  <!-- SLIDE 2: WHY — The Problem -->
-  <div class="slide slide-sidebar">
-    <div class="sidebar-left" style="background:var(--sand);">
-      <div class="eyebrow eyebrow-amber">The Bottleneck</div>
-      <h2 class="section-head" style="font-size:28px;">Quoting is manual, slow, and expensive.</h2>
-      <p class="lead-sm" style="margin-bottom:24px;">When a factory receives an RFQ (Request for Quote), a senior engineer must stop production work to manually interpret geometry, estimate machine time, and calculate costs to generate a <strong>Bill of Quantities (BoQ)</strong>. This manual delay costs them contracts.</p>
-      <div class="divider"></div>
-      <div class="quote-text">"We lose orders every single week simply because our quote comes back too late."<br><span style="font-size:13px;color:var(--stone);font-family:'DM Sans',sans-serif;font-style:normal;margin-top:8px;display:block;font-weight:500;">— Factory Operator, Kaoshiung</span></div>
-    </div>
-    <div class="sidebar-right">
-      <span class="slide-label">Value Creation Engine</span>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div class="grid-2">
-          <div class="card-teal">
-            <div class="tag tag-teal" style="margin-bottom:12px;">The Target User</div>
-            <h3 class="card-title">SME Sub-contractors</h3>
-            <p class="body-sm">Small factories receiving 10–30 quote requests weekly. They lack heavy ERP systems, relying entirely on memory, Excel, and legacy communication.</p>
-          </div>
-          <div class="card-amber">
-            <div class="tag tag-amber" style="margin-bottom:12px;">The Advantage</div>
-            <h3 class="card-title">Instant Scalability</h3>
-            <p class="body-sm">With ProQuantify, junior sales staff can reply with an accurate BoQ in under 10 minutes, protecting profit margins and securing client lock-in.</p>
+      <div class="grid-2" style="width:100%; gap:14px; margin-bottom:14px;">
+        <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 26px; overflow: hidden; height: 142px; position: relative; text-align:left;">
+          <img class="portrait-img" src="Gusti_Portrait.png" alt="Gusti" style="height: 142px; margin-bottom: -5px;">
+          <div style="padding: 18px 0 20px 18px; z-index: 2; position:relative;">
+            <h3 class="card-title" style="margin-bottom:5px; font-size:18px;">Risman Gustiana Wardana</h3>
+            <div class="tag tag-teal" style="margin-bottom:8px;">Chief Executive Officer</div>
+            <p class="body-sm" style="font-size:12px;">Specializes in Intelligent Manufacturing and translates factory bottlenecks into software features.</p>
           </div>
         </div>
-        <div class="card" style="border-left:4px solid var(--navy);">
-          <div class="tag tag-navy" style="margin-bottom:16px;">Core Infrastructure & Capabilities</div>
-          <div class="grid-3" style="gap:12px;">
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-microchip" style="margin-right:6px;"></i> File Ingestion</div>
-              <p class="body-sm" style="font-size:12px;">Instantly parses dimensions and tolerances from CAD, STEP, DXF, and DWG inputs.</p>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-calculator" style="margin-right:6px;"></i> Dynamic Pricing</div>
-              <p class="body-sm" style="font-size:12px;">Calculates raw material costs based on live market indices and volume parameters.</p>
-            </div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-stopwatch" style="margin-right:6px;"></i> Time Mapping</div>
-              <p class="body-sm" style="font-size:12px;">Maps milling, turning, and casting times to real-time machine availability.</p>
-            </div>
+
+        <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding: 0 26px; overflow: hidden; height: 142px; position: relative; text-align:left;">
+          <img class="portrait-img" src="Ahmad_Portrait.png" alt="Ahmad" style="height: 142px; margin-bottom: -5px;">
+          <div style="padding: 18px 0 20px 18px; z-index: 2; position:relative;">
+            <h3 class="card-title" style="margin-bottom:5px; font-size:18px;">Ahmad Habibulloh</h3>
+            <div class="tag tag-amber" style="margin-bottom:8px;">Chief Technology Officer</div>
+            <p class="body-sm" style="font-size:12px;">Architects the extraction pipeline that translates raw STEP files into pricing data.</p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- SLIDE 3: HOW — The Process (NATIVE FLOW DIAGRAM) -->
-  <div class="slide slide-full">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
-      <div>
-        <span class="slide-label">Technical Pipeline</span>
-        <h2 class="section-head" style="margin-bottom:0;">The 5-Stage Parasolid Architecture</h2>
-      </div>
-    </div>
-    
-    <div class="flow-container">
-      <div class="flow-line"></div>
-      
-      <div class="flow-node highlight">
-        <div class="flow-step-num">1</div>
-        <div class="flow-icon"><i class="fa-solid fa-file-import"></i></div>
-        <div class="flow-title">File Ingestion</div>
-        <div class="flow-desc">Parses drawing layers and GD&T from DWG, DXF, STEP into a neutral B-Rep solid memory model.</div>
-      </div>
-      
-      <div class="flow-node highlight">
-        <div class="flow-step-num">2</div>
-        <div class="flow-icon"><i class="fa-solid fa-cube"></i></div>
-        <div class="flow-title">Geometry Kernel</div>
-        <div class="flow-desc">OCCT / Parasolid engine maps exact boundary geometry (volumes, surface areas, wall thickness).</div>
-      </div>
-
-      <div class="flow-node highlight">
-        <div class="flow-step-num">3</div>
-        <div class="flow-icon"><i class="fa-solid fa-microchip"></i></div>
-        <div class="flow-title">Feature Extraction</div>
-        <div class="flow-desc">ResNet ML & rule classifiers interrogate B-Rep to detect specific features (holes, threads, Ra values).</div>
-      </div>
-
-      <div class="flow-node active">
-        <div class="flow-step-num">4</div>
-        <div class="flow-icon"><i class="fa-solid fa-gears"></i></div>
-        <div class="flow-title">Decision Engine</div>
-        <div class="flow-desc">Maps sequences via rule/LLM layers, multiplying by material & localized setup costs.</div>
-      </div>
-
-      <div class="flow-node highlight">
-        <div class="flow-step-num">5</div>
-        <div class="flow-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-        <div class="flow-title">BoQ Assembly</div>
-        <div class="flow-desc">Claude API formats structured JSON into client-ready PDF BoQs and Excel procurement plans.</div>
-      </div>
-    </div>
-
-    <div class="grid-2" style="flex:1; margin-top: 10px;">
-      <div class="card" style="display:flex;flex-direction:column;justify-content:center; border-left: 4px solid var(--teal);">
-        <h3 class="card-title">Deterministic, Not Guessed.</h3>
-        <p class="body-sm" style="margin-bottom:12px;">Standard AI forces engineers to guess if a shaft is 32mm or 35mm from a flat image. <strong>We use the Parasolid path. The geometry is the ground truth.</strong></p>
-        <p class="body-sm">A detected blind hole of 8mm diameter at 20mm depth with an M8 thread maps directly to a CNC tapping cycle with known tool and setup costs—creating a traceable, defensible quote.</p>
-      </div>
-      <div class="card-sand" style="display:flex;flex-direction:column;justify-content:center;">
-        <h3 class="card-title">SME Drawing Fallbacks</h3>
-        <p class="body-sm" style="margin-bottom:12px;">SME CAD files are not always well-structured. We solve this natively at Stage 1, using Python-OCC and LibreCAD SDK to validate and structure boundary geometry layers before execution.</p>
-        <p class="body-sm">Moving forward, we are building a proprietary fallback library of Parasolid models based on specific historical part types to guarantee 100% processing uptime.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 4: WHO — Team -->
-<div class="slide slide-full" style="justify-content: center; padding-top: 60px;">
-  <div style="text-align:center; margin-bottom:40px;">
-    <span class="slide-label">The Team & Ecosystem</span>
-    <h2 class="section-head" style="margin-bottom:0;">Built by engineers. Backed by industry.</h2>
-    <p class="lead-sm" style="margin-top:12px; margin-inline:auto; max-width:600px;">
-      We are not outsiders guessing at manufacturing problems. We built this engine to solve the specific quoting bottlenecks we have faced firsthand.
-    </p>
-  </div>
-
-  <div class="grid-2" style="margin-bottom:24px; max-width:1060px; margin-inline:auto; width:100%;">
-
-    <!-- Gusti Card -->
-    <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding:0 32px; overflow:hidden; height:170px; position:relative;">
-      <img
-        src="https://mzbulloh.github.io/ProQuantify/Gusti_Portrait.png"
-        alt="Gusti Portrait"
-        style="height:170px; width:auto; object-fit:contain; display:block; margin-bottom:-5px;"
-      >
-
-      <div style="padding:24px 0 24px 20px; z-index:2; position:relative;">
-        <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Risman Gustiana Wardana</h3>
-        <div class="tag tag-teal" style="margin-bottom:10px;">Chief Executive Officer</div>
-        <p class="body-sm" style="font-size:12px;">
-          Specializes in Intelligent Manufacturing. Translates complex factory floor bottlenecks into actionable software features.
-        </p>
-      </div>
-    </div>
-
-    <!-- Ahmad Card -->
-    <div style="background:var(--sand); border:1px solid var(--border); border-radius:12px; display:flex; align-items:flex-end; padding:0 32px; overflow:hidden; height:170px; position:relative;">
-      <img
-        src="https://mzbulloh.github.io/ProQuantify/Ahmad_Portrait.png"
-        alt="Ahmad Portrait"
-        style="height:170px; width:auto; object-fit:contain; display:block; margin-bottom:-5px;"
-      >
-
-      <div style="padding:24px 0 24px 20px; z-index:2; position:relative;">
-        <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Ahmad Habibulloh</h3>
-        <div class="tag tag-amber" style="margin-bottom:10px;">Chief Technology Officer</div>
-        <p class="body-sm" style="font-size:12px;">
-          The architect of the extraction pipeline translating raw STEP files into pricing data with 5 years of industrial experience.
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="grid-3" style="max-width:1060px; margin-inline:auto; width:100%;">
-    <div class="card" style="padding:20px 24px;">
-      <div style="font-size:15px; font-weight:700; color:var(--ink); margin-bottom:4px;">Prof. Yuh-Shying Gau</div>
-      <div style="font-size:12px; color:var(--stone-dark);">Industry Advisor</div>
-    </div>
-
-    <div class="card" style="padding:20px 24px;">
-      <div style="font-size:15px; font-weight:700; color:var(--ink); margin-bottom:4px;">Prof. Jyun Ping Jhan</div>
-      <div style="font-size:12px; color:var(--stone-dark);">AI Development Advisor</div>
-    </div>
-
-    <div class="card" style="border:2px solid var(--teal); background:var(--teal-light); padding:20px 24px; display:flex; align-items:center; justify-content:space-between;">
-      <div>
-        <div style="font-size:15px; font-weight:700; color:var(--teal); margin-bottom:4px;">Strategic Alliance</div>
-        <div style="font-size:12px; color:var(--teal); opacity:0.8; font-weight:500;">Major Ecosystem Partner</div>
-      </div>
-      <i class="fa-solid fa-handshake-angle" style="font-size:26px; color:var(--teal);"></i>
-    </div>
-  </div>
-</div>
-
-  <!-- SLIDE 5: NATIVE MOCKUP -->
-  <div class="slide slide-full">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <div>
-        <span class="slide-label">Live Product Demo</span>
-        <h2 class="section-head" style="margin-bottom:0;font-size:28px;">Cross-Platform Integration</h2>
-      </div>
-      <button class="demo-btn" onclick="playDemo()"><i class="fa-solid fa-play" style="margin-right:8px;"></i> Run Live Simulation</button>
-    </div>
-    
-    <div class="mockup-container">
-      <div class="mk-mobile">
-        <div class="mk-header">
-          <div style="width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--teal); color:white; font-size:12px; font-family:'DM Serif Display',serif;">PQ</div>
+      <div class="grid-3" style="width:100%; gap:14px; text-align:left;">
+        <div class="card" style="padding: 16px 20px;">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Yuh-Shying Gau</div>
+          <div style="font-size:12px;color:var(--stone-dark);">Industry and Technical Advisor</div>
+        </div>
+        <div class="card" style="padding: 16px 20px;">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Jyun Ping Jhan</div>
+          <div style="font-size:12px;color:var(--stone-dark);">AI Development Advisor</div>
+        </div>
+        <div class="card" style="border: 2px solid var(--teal); background: var(--teal-light); padding: 16px 20px; display:flex; align-items:center; justify-content:space-between;">
           <div>
-            <div style="font-size:14px;font-weight:700;font-family:'DM Serif Display',serif;">ProQuantify Bot</div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.7);">Online</div>
-          </div>
-        </div>
-        <div class="mk-chat">
-          <div class="mk-bubble mk-bot show" style="align-self:center;background:transparent;border:none;color:var(--stone);font-size:11px;">Today</div>
-          <div class="mk-bubble mk-bot show">System Active. Send your CAD/STEP file to generate a BoQ.</div>
-          
-          <div id="m-file" class="mk-bubble mk-user" style="display:flex;gap:10px;align-items:center;">
-            <i class="fa-solid fa-cube" style="font-size:18px;"></i>
-            <div><strong>housing_v3.step</strong><br><span style="font-size:11px;">4.2 MB</span></div>
-          </div>
-          
-          <div id="m-step1" class="mk-bubble mk-bot">
-            <strong style="font-size:11px; text-transform:uppercase; color:var(--stone-dark);">Phase 1: Basic Analysis</strong>
-            <div class="mk-card">
-              <div><span style="color:var(--stone);">Part:</span> Gearbox Housing</div>
-              <div><span style="color:var(--stone);">Material:</span> Alum 6061-T6</div>
-              <hr style="border:0;border-top:1px solid var(--border);margin:6px 0;">
-              <div style="color:var(--ink);font-weight:700;font-size:13px;">Base Price: NT$12,450</div>
-            </div>
-          </div>
-          
-          <div id="m-step2" class="mk-bubble mk-bot">
-            <strong style="font-size:11px; text-transform:uppercase; color:var(--teal);">Phase 2: Pro Routing</strong>
-            <div class="mk-card" style="background:var(--teal-light);border-color:rgba(29,122,107,0.3);">
-              <div style="color:var(--teal); font-weight:600; margin-bottom:2px;">Supplier: QingFeng</div>
-              <div style="color:var(--teal); font-size:11px; margin-bottom:2px;">Milling: Available (2 days)</div>
-              <div style="color:var(--teal); font-size:11px;">Assembly: Available (1 day)</div>
-              <hr style="border:0;border-top:1px solid rgba(29,122,107,0.3);margin:6px 0;">
-              <div style="color:var(--teal);font-weight:700;">Est. Lead Time: 3 Days</div>
-            </div>
-          </div>
-          
-          <div id="m-step3" class="mk-bubble" style="background:transparent; padding:0; display:flex; gap:8px; flex-direction:column; border:none;">
-            <div class="mk-action-btn"><i class="fa-solid fa-file-pdf" style="margin-right:6px;"></i> Download BoQ PDF</div>
-            <div class="mk-action-btn" style="background:var(--cream); color:var(--teal); border:1px solid var(--teal); margin-top:0;"><i class="fa-solid fa-magnifying-glass-chart" style="margin-right:6px;"></i> Review Result</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mk-web">
-        <div class="mk-web-nav">
-          <span style="font-size:11px;background:var(--teal);color:white;padding:4px 8px;border-radius:4px;margin-right:12px;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:0.05em;">PRO</span>
-          Enterprise Operator Dashboard
-        </div>
-        <div class="mk-web-body">
-          <div class="mk-panel">
-            <span class="slide-label">Geometry Sandbox</span>
-            <div class="mk-box">
-              <i id="w-cad" class="fa-solid fa-cubes" style="font-size:48px;color:var(--stone);transition:0.5s;"></i>
-              <div id="w-scan" style="position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(29,122,107,0.15);border-right:3px solid var(--teal);transition:1s ease;"></div>
-            </div>
-            <span class="slide-label" style="margin-top:10px;">Execution Terminal</span>
-            <div style="flex:1;display:flex;flex-direction:column;">
-              <div id="l1" class="mk-log">Waiting for client payload...</div>
-              <div id="l2" class="mk-log">File ingested: housing_v3.step</div>
-              <div id="l3" class="mk-log" style="color:var(--teal);">Features extracted: 8x M8 threads found.</div>
-              <div id="l4" class="mk-log" style="color:var(--amber);">Mapping live process availability...</div>
-              <div id="l5" class="mk-log" style="color:var(--teal);font-weight:700;">Timeline Confirmed: 3 Days Production.</div>
-            </div>
-          </div>
-          <div class="mk-panel" style="flex:0.85;">
-            <span class="slide-label">Bill of Quantities Summary</span>
-            <div class="card" style="padding:16px; margin-bottom:12px;">
-              <div style="font-size:11px;color:var(--stone-dark);font-weight:700;text-transform:uppercase;">Target Cost</div>
-              <div id="w-cost" style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink); margin-top:4px;">---</div>
-            </div>
-            <div class="card" id="w-supplier-card" style="padding:16px; border-left:4px solid var(--border); transition:0.3s; margin-bottom:20px;">
-              <div style="font-size:11px;color:var(--stone-dark);font-weight:700;text-transform:uppercase;">Assigned Partner</div>
-              <div id="w-supplier" style="font-family:'DM Serif Display',serif; font-size:20px; color:var(--stone); margin-top:4px;">Pending Routing...</div>
-              <div id="w-time" style="font-size:12px; color:var(--teal); margin-top:8px; font-weight:600; opacity:0;">Est. Time: 3 Days</div>
-            </div>
-            
-            <div style="display:flex; gap:12px; margin-top:auto;">
-              <button class="w-action-btn" id="w-btn-dl" disabled>
-                  <i class="fa-solid fa-file-pdf"></i> PDF Export
-              </button>
-              <button class="w-action-btn" id="w-btn-review" disabled style="background:var(--sand-mid); color:var(--navy); border:1px solid var(--border);">
-                  <i class="fa-solid fa-chart-bar"></i> Review
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 6: MARKET STRATEGY (SYMMETRICAL: STATS + CBTC) -->
-  <div class="slide slide-full">
-    <div style="text-align:center; margin-bottom:30px;">
-      <span class="slide-label">Market Strategy</span>
-      <h2 class="section-head" style="margin-bottom:0;">The Opportunity & Positioning</h2>
-    </div>
-    
-    <div style="display:flex; gap:32px; height:100%;">
-      
-      <!-- Left side: Market Stats 2x2 -->
-      <div style="flex:1; display:flex; flex-direction:column;">
-        <h3 class="card-title" style="margin-bottom:16px; font-size: 20px;">Market Size & Bottlenecks</h3>
-        <div class="grid-2" style="gap:16px; flex:1;">
-          
-          <div class="card-sand" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-            <div class="stat-big" style="color:var(--teal);font-size:48px;">1.7M</div>
-            <div style="font-size:14px;color:var(--stone-dark);font-weight:600;">SMEs in Taiwan</div>
-          </div>
-          
-          <div class="card-sand" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-            <div class="stat-big" style="color:var(--amber);font-size:48px;">10–30</div>
-            <div style="font-size:14px;color:var(--stone-dark);font-weight:600;">RFQs received weekly per SME</div>
-          </div>
-          
-          <div class="card-sand" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-            <div class="stat-big" style="color:var(--navy);font-size:48px;">NT$0</div>
-            <div style="font-size:14px;color:var(--stone-dark);font-weight:600;">Setup cost for clients</div>
-          </div>
-          
-          <div class="card-sand" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-            <div class="stat-big" style="color:var(--teal);font-size:48px;">&lt;10</div>
-            <div style="font-size:14px;color:var(--stone-dark);font-weight:600;">Mins to generate BoQ</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Right side: CBTC 2x2 -->
-      <div style="flex:1.4; display:flex; flex-direction:column;">
-        <h3 class="card-title" style="margin-bottom:16px; font-size: 20px;">Go-To-Market Framework</h3>
-        <div class="grid-2" style="gap:16px; flex:1;">
-          
-          <!-- Customer -->
-          <div class="card-sand" style="padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--navy);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-users-viewfinder"></i></div>
-              <h3 class="card-title" style="margin:0;font-size:18px;">Customer</h3>
-            </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Precision SMEs.</strong> Overwhelmed by high-mix, low-volume orders and manual BoQ generation. They completely lack IT budgets for heavy ERP software.</p>
-          </div>
-
-          <!-- Brand -->
-          <div class="card-sand" style="padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--amber);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-award"></i></div>
-              <h3 class="card-title" style="margin:0;font-size:18px;">Brand</h3>
-            </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>The Pocket Consultant.</strong> A lightweight, highly intelligent sidekick that empowers sales engineers rather than acting as a disruptive admin system.</p>
-          </div>
-
-          <!-- Touch Point -->
-          <div class="card-sand" style="padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--teal);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-mobile-screen"></i></div>
-              <h3 class="card-title" style="margin:0;font-size:18px;">Touch Point</h3>
-            </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Native Messaging.</strong> Zero app installations. Operators simply forward a CAD file via LINE or Telegram and receive a PDF BoQ instantly.</p>
-          </div>
-
-          <!-- Competition -->
-          <div class="card-sand" style="padding:24px;">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <div style="width:36px;height:36px;background:var(--stone-dark);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-chess-knight"></i></div>
-              <h3 class="card-title" style="margin:0;font-size:18px;">Competition</h3>
-            </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Legacy ERPs.</strong> We completely bypass the massive upfront licensing costs and 6-month onboarding periods required by traditional competitors.</p>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- SLIDE 7: PRICING -->
-  <div class="slide slide-full">
-    <div style="text-align:center; margin-bottom:20px;">
-      <span class="slide-label">Business Model & Monetization</span>
-      <h2 class="section-head" style="margin-bottom:0; font-size: 28px;">Accessible for SMEs. Built for Enterprise.</h2>
-    </div>
-    
-    <div class="grid-3" style="max-width: 1100px; margin-inline:auto; gap: 12px;">
-      <div class="pricing-col">
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px;">Basic Tier</h3>
-        <p class="body-sm">For independent operators needing fast answers.</p>
-        <div class="pricing-price">NT$1,500<span style="font-size:16px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
-        <div class="divider" style="margin: 12px 0;"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li><i class="fa-solid fa-check"></i> <strong>Up to 50 BoQs / Month</strong></li>
-          <li><i class="fa-solid fa-check"></i> Reads CAD, STEP, DXF, DWG</li>
-          <li><i class="fa-solid fa-check"></i> Base Price Estimation</li>
-          <li><i class="fa-solid fa-check"></i> Static Supplier Match</li>
-        </ul>
-      </div>
-      
-      <div class="pricing-col featured">
-        <div class="tag tag-teal" style="align-self: flex-start; margin-bottom: 12px;">Most Popular</div>
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px; color:var(--teal);">Pro Tier</h3>
-        <p class="body-sm">For growing sub-contractors handling complex BoQ requests.</p>
-        <div class="pricing-price" style="color:var(--teal);">NT$3,000<span style="font-size:16px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
-        <div class="divider" style="margin: 12px 0; background: rgba(29,122,107,0.2);"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li><i class="fa-solid fa-check"></i> <strong>Up to 300 BoQs / Month</strong></li>
-          <li><i class="fa-solid fa-check"></i> <strong>Live Time Estimation:</strong> Based on live supplier availability.</li>
-          <li><i class="fa-solid fa-check"></i> Real-time Lead Time Calculation</li>
-          <li><i class="fa-solid fa-check"></i> Professional PDF BoQ Export</li>
-        </ul>
-      </div>
-      
-      <div class="pricing-col" style="background:var(--navy); color:white; border-color:var(--navy);">
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px; color:white;">Enterprise</h3>
-        <p class="body-sm" style="color:rgba(255,255,255,0.7);">For large parent networks and tier-1 suppliers.</p>
-        <div class="pricing-price" style="color:white;">Custom<span style="font-size:16px; color:rgba(255,255,255,0.7); font-family:'DM Sans',sans-serif;">/yr</span></div>
-        <div class="divider" style="margin: 12px 0; background: rgba(255,255,255,0.1);"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> <strong>Unlimited BoQ Volume</strong></li>
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Installed locally on secure factory servers.</li>
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Direct API integrations for legacy ERPs.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Trial Callout -->
-    <div style="text-align: center; margin-top: 16px;">
-      <div style="display:inline-block; background:rgba(196,123,43,0.1); border:1px solid rgba(196,123,43,0.3); padding:8px 24px; border-radius:24px; font-size:12px; color:var(--amber); font-weight:600;">
-        <i class="fa-solid fa-gift" style="margin-right:8px;"></i> All SME tiers include a risk-free 14-Day Free Trial (Up to 10 Free BoQs).
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 8: ROADMAP -->
-  <div class="slide slide-full">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;">
-      <div>
-        <span class="slide-label">Execution Plan</span>
-        <h2 class="section-head" style="margin-bottom:0;">Roadmap to Scale</h2>
-      </div>
-    </div>
-    
-    <div style="display:flex; flex-direction:column; justify-content:center; flex:1;">
-      <div class="tl-row" style="background:var(--cream); border:1px solid var(--border);">
-        <div class="tl-year" style="color:var(--stone-dark);">2026</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:var(--ink); margin-bottom:6px;">Phase 1: Test, Validate & MVP</h3>
-          <p class="body-sm" style="max-width:700px;">Deploying the initial MVP utilizing GTEP funding. Testing with 1–3 pilot factories to create absolute trust in the AI accuracy. Goal: <strong>95% BoQ Accuracy vs. Human Engineers.</strong></p>
-        </div>
-      </div>
-      
-      <div class="tl-row" style="background:var(--teal-light); border:2px solid var(--teal); box-shadow: 0 10px 30px rgba(29,122,107,0.1); transform: scale(1.02); z-index:10;">
-        <div class="tl-year" style="color:var(--teal);">2027</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:var(--teal); margin-bottom:6px;">Phase 2: Organic Launch in the South</h3>
-          <p class="body-sm" style="max-width:700px; color:var(--stone-dark);">Leveraging our existing organic network in Kaohsiung to scale reliably. Executing Go-To-Market via ecosystem partnerships and onboarding 30–50 mid-tier factories across Southern Taiwan.</p>
-        </div>
-      </div>
-      
-      <div class="tl-row" style="background:var(--navy); border:1px solid var(--navy);">
-        <div class="tl-year" style="color:white;">2028+</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:white; margin-bottom:6px;">Phase 3: Northward Expansion & Enterprise Scale</h3>
-          <p class="body-sm" style="max-width:700px; color:rgba(255,255,255,0.7);">Expanding from our Southern stronghold into the Northern industrial hubs. Selling top-down Enterprise licenses to parent companies, mandating ProQuantify usage across their sub-contractor networks.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 9: THE ASK -->
-  <div class="slide slide-sidebar">
-    <div class="sidebar-left" style="background:var(--sand);">
-      <div class="eyebrow eyebrow-amber">The Catalyst</div>
-      <h2 class="section-head" style="font-size:32px;">Executing the NT$10,000 grant.</h2>
-      <p class="lead-sm" style="margin-bottom:24px;">We run extremely lean. Our goal is to convert the initial GTEP capital directly into functional MVP validation and our first paying pilots.</p>
-      <div class="divider"></div>
-      <div class="stat-big" style="color:var(--navy);font-size:56px;margin-bottom:4px;">NT$10k</div>
-      <div style="font-size:14px;color:var(--stone-dark);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">GTEP Initial Capital</div>
-    </div>
-    <div class="sidebar-right">
-      <span class="slide-label">Capital Efficiency Breakdown</span>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
-        <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:16px;">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--ink);">Cloud GPU & Infrastructure</div>
-            <div style="font-size:12px;color:var(--stone-dark);margin-top:2px;">Funding secure AES-256 cloud parsing for CAD and STEP files.</div>
-          </div>
-          <span style="font-size:16px;font-weight:700;color:var(--teal);">NT$4,000</span>
-        </div>
-        <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:16px;">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--ink);">API Services & Integration</div>
-            <div style="font-size:12px;color:var(--stone-dark);margin-top:2px;">Direct webhook connections for Telegram/Line and PDF generation.</div>
-          </div>
-          <span style="font-size:16px;font-weight:700;color:var(--teal);">NT$3,000</span>
-        </div>
-        <div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:16px;">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--ink);">Pilot Onboarding</div>
-            <div style="font-size:12px;color:var(--stone-dark);margin-top:2px;">Direct onboarding costs for the first 3 factory testing partners.</div>
-          </div>
-          <span style="font-size:16px;font-weight:700;color:var(--teal);">NT$3,000</span>
-        </div>
-      </div>
-      <div class="divider" style="margin: 10px 0 20px 0;"></div>
-      <span class="slide-label">Beyond Capital</span>
-      <div class="grid-3" style="gap:12px;">
-        <div class="card-teal" style="padding:16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:6px;"><i class="fa-solid fa-lightbulb"></i> Mentorship</div>
-          <p class="body-sm" style="font-size:12px;">Venture scaling insights to transition us from engineers to founders.</p>
-        </div>
-        <div class="card-teal" style="padding:16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:6px;"><i class="fa-solid fa-shield-halved"></i> IP Protection</div>
-          <p class="body-sm" style="font-size:12px;">Legal frameworks to defend our pricing AI logic.</p>
-        </div>
-        <div class="card-teal" style="padding:16px;">
-          <div style="font-size:13px;font-weight:700;color:var(--teal);margin-bottom:6px;"><i class="fa-solid fa-handshake"></i> Network</div>
-          <p class="body-sm" style="font-size:12px;">Introductions via GTEP and partners to principal factory owners.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 10: CLOSING (CLEAN & IMPACTFUL) -->
-  <div class="slide slide-full" style="background:var(--navy); color:white; align-items:center; justify-content:center; text-align:center; padding: 60px 80px;">
-    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;"></div>
-    
-    <div style="position:relative; z-index:2; max-width: 900px;">
-      
-      <h1 style="font-family:'DM Serif Display',serif;font-size:48px;color:#fff;line-height:1.15;margin-bottom:24px;">
-        Let's accelerate procurement for Taiwan's precision manufacturers.
-      </h1>
-      
-      <p style="font-size:18px;color:rgba(255,255,255,0.8);line-height:1.6;font-weight:300;margin-bottom:40px;">
-        Taiwan's small factories are the reason the world's electronics exist.<br>It is time we gave them modern tools to scale.
-      </p>
-      
-      <div style="display:flex; justify-content:center;">
-        <div style="padding:14px 32px;background:var(--teal);border-radius:8px;font-size:15px;color:white;font-weight:700; cursor:pointer; letter-spacing: 0.02em; display:flex; align-items:center; gap: 10px;">
-          <i class="fa-solid fa-envelope"></i> ask@proquantify.io
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="foot" id="main-foot">
-    <div class="foot-brand">ProQuantify</div>
-    <div class="foot-num" id="slideNum">1 / 10</div>
-    <div class="foot-nav">
-      <button class="nav-btn" onclick="nav(-1)"><i class="fa-solid fa-arrow-left"></i></button>
-      <button class="nav-btn" onclick="nav(1)"><i class="fa-solid fa-arrow-right"></i></button>
-    </div>
-  </div>
-</div>
-
-<script>
-// --- Slide Navigation Logic ---
-const slides = document.querySelectorAll('.slide');
-const progress = document.getElementById('progress');
-const slideNum = document.getElementById('slideNum');
-const footer = document.getElementById('main-foot');
-let cur = 0;
-
-function render() {
-  slides.forEach((s, i) => {
-    s.classList.toggle('active', i === cur);
-    s.style.display = i === cur ? 'flex' : 'none';
-  });
-  progress.style.width = ((cur + 1) / slides.length * 100) + '%';
-  slideNum.textContent = (cur + 1) + ' / ' + slides.length;
-  
-  if(cur === 9 || cur === 0) {
-      footer.classList.add('foot-dark');
-  } else {
-      footer.classList.remove('foot-dark');
-  }
-}
-
-function nav(dir) {
-  const next = cur + dir;
-  if (next >= 0 && next < slides.length) { cur = next; render(); }
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') nav(1);
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nav(-1);
-});
-render();
-
-// --- Native Mockup Animation Logic ---
-function resetDemo() {
-    document.getElementById('m-file').classList.remove('show');
-    document.getElementById('m-step1').classList.remove('show');
-    document.getElementById('m-step2').classList.remove('show');
-    document.getElementById('m-step3').classList.remove('show');
-    
-    document.getElementById('w-scan').style.left = '-100%';
-    document.getElementById('w-cad').style.color = 'var(--stone)';
-    
-    document.getElementById('l1').classList.add('show');
-    document.getElementById('l2').classList.remove('show');
-    document.getElementById('l3').classList.remove('show');
-    document.getElementById('l4').classList.remove('show');
-    document.getElementById('l5').classList.remove('show');
-    
-    document.getElementById('w-cost').innerText = '---';
-    document.getElementById('w-supplier').innerText = 'Pending Routing...';
-    document.getElementById('w-supplier').style.color = 'var(--stone)';
-    document.getElementById('w-time').style.opacity = '0';
-    document.getElementById('w-supplier-card').style.borderColor = 'var(--border)';
-    document.getElementById('w-supplier-card').style.background = 'var(--cream)';
-    
-    document.getElementById('w-btn-dl').disabled = true;
-    document.getElementById('w-btn-review').disabled = true;
-}
-
-function playDemo() {
-    resetDemo();
-    
-    setTimeout(() => { 
-        document.getElementById('m-file').classList.add('show');
-        document.getElementById('l1').classList.remove('show');
-        document.getElementById('l2').classList.add('show');
-    }, 800);
-    
-    setTimeout(() => { 
-        document.getElementById('w-scan').style.left = '100%';
-        document.getElementById('w-cad').style.color = 'var(--teal)';
-    }, 1500);
-
-    setTimeout(() => { 
-        document.getElementById('m-step1').classList.add('show');
-        document.getElementById('l3').classList.add('show');
-        document.getElementById('w-cost').innerText = 'NT$12,450';
-    }, 2800);
-    
-    setTimeout(() => { 
-        document.getElementById('l4').classList.add('show');
-    }, 4000);
-
-    setTimeout(() => { 
-        document.getElementById('m-step2').classList.add('show');
-        document.getElementById('l5').classList.add('show');
-        
-        const supCard = document.getElementById('w-supplier-card');
-        supCard.style.borderColor = 'var(--teal)';
-        supCard.style.background = 'var(--teal-light)';
-        
-        const wSup = document.getElementById('w-supplier');
-        wSup.innerText = 'QingFeng Machining';
-        wSup.style.color = 'var(--teal)';
-        
-        document.getElementById('w-time').style.opacity = '1';
-    }, 5500);
-    
-    setTimeout(() => { 
-        document.getElementById('m-step3').classList.add('show');
-        document.getElementById('w-btn-dl').disabled = false;
-        document.getElementById('w-btn-review').disabled = false;
-    }, 7000);
-}
-function forceDemoFinalState() {
-  // Mobile chat final state
-  ['m-file', 'm-step1', 'm-step2', 'm-step3'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.classList.add('show');
-  });
-
-  // Web dashboard final state
-  const scan = document.getElementById('w-scan');
-  if (scan) scan.style.left = '100%';
-
-  const cad = document.getElementById('w-cad');
-  if (cad) cad.style.color = 'var(--teal)';
-
-  ['l2', 'l3', 'l4', 'l5'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.classList.add('show');
-  });
-
-  const l1 = document.getElementById('l1');
-  if (l1) l1.classList.remove('show');
-
-  const cost = document.getElementById('w-cost');
-  if (cost) cost.innerText = 'NT$12,450';
-
-  const supCard = document.getElementById('w-supplier-card');
-  if (supCard) {
-    supCard.style.borderColor = 'var(--teal)';
-    supCard.style.background = 'var(--teal-light)';
-  }
-
-  const supplier = document.getElementById('w-supplier');
-  if (supplier) {
-    supplier.innerText = 'QingFeng Machining';
-    supplier.style.color = 'var(--teal)';
-  }
-
-  const time = document.getElementById('w-time');
-  if (time) time.style.opacity = '1';
-
-  const dl = document.getElementById('w-btn-dl');
-  const review = document.getElementById('w-btn-review');
-  if (dl) dl.disabled = false;
-  if (review) review.disabled = false;
-}
-
-window.addEventListener('beforeprint', () => {
-  forceDemoFinalState();
-});
-</script>
-</body>
-</html>" alt="Ahmad" style="height: 170px; margin-bottom: -5px;">
-        <div style="padding: 24px 0 24px 20px; z-index: 2; position:relative;">
-          <h3 class="card-title" style="margin-bottom:6px; font-size:20px;">Ahmad Habibulloh</h3>
-          <div class="tag tag-amber" style="margin-bottom:10px;">CTO · AI & Data Engineer</div>
-          <p class="body-sm" style="font-size:12px;">3–5 years industrial experience. Architect of the extraction pipeline translating raw STEP files into pricing data.</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="grid-3" style="max-width: 1060px; margin-inline: auto; width: 100%;">
-      <div class="card" style="padding: 20px 24px;">
-        <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Yuh-Shying Gau</div>
-        <div style="font-size:12px;color:var(--stone-dark);">Industry Advisor</div>
-      </div>
-      <div class="card" style="padding: 20px 24px;">
-        <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;">Prof. Jyun Ping Jhan</div>
-        <div style="font-size:12px;color:var(--stone-dark);">AI Development Advisor</div>
-      </div>
-      <div class="card" style="border: 2px solid var(--teal); background: var(--teal-light); padding: 20px 24px; display:flex; align-items:center; justify-content:space-between;">
-        <div>
-            <div style="font-size:15px;font-weight:700;color:var(--teal);margin-bottom:4px;">Strategic Alliance</div>
+            <div style="font-size:14px;font-weight:700;color:var(--teal);margin-bottom:4px;">Strategic Alliance</div>
             <div style="font-size:12px;color:var(--teal);opacity:0.8;font-weight:500;">Major Ecosystem Partner</div>
+          </div>
+          <i class="fa-solid fa-handshake-angle" style="font-size: 24px; color: var(--teal);"></i>
         </div>
-        <i class="fa-solid fa-handshake-angle" style="font-size: 26px; color: var(--teal);"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: WHY — The Problem -->
+  <div class="slide slide-sidebar">
+    <div class="sidebar-left" style="background:var(--sand);">
+      <div class="eyebrow eyebrow-amber">The Bottleneck</div>
+      <h2 class="section-head" style="font-size:28px;">Quoting is manual, slow, and error-prone</h2>
+      <p class="lead-sm" style="margin-bottom:24px;">Slow response times, inconsistent estimates, and human errors reduce competitiveness and increase the risk of losing potential contracts.</p>
+      <div class="divider"></div>
+      <div class="quote-text">"We lose orders every single week simply because our quote comes back too late."<br><span style="font-size:13px;color:var(--stone);font-family:'DM Sans',sans-serif;font-style:normal;margin-top:8px;display:block;font-weight:500;">— Factory Operator, Taichung</span></div>
+    </div>
+    <div class="sidebar-right">
+      <span class="slide-label">Value Creation Engine</span>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="grid-2">
+          <div class="card-teal">
+            <div class="tag tag-teal" style="margin-bottom:12px;">The Target User</div>
+            <h3 class="card-title">SME Sub-contractors</h3>
+            <p class="body-sm">Small factories lack  ERP systems, relying entirely on memory, excel, and legacy communication.</p>
+          </div>
+          <div class="card-amber">
+            <div class="tag tag-amber" style="margin-bottom:12px;">The Advantage</div>
+            <h3 class="card-title">Instant Scalability</h3>
+            <p class="body-sm">With ProQuantify, sales can reply with an accurate BoQ in under 10 minutes, securing client requests.</p>
+          </div>
+        </div>
+        <div class="card" style="border-left:4px solid var(--navy);">
+          <div class="tag tag-navy" style="margin-bottom:16px;">Core Infrastructure & Capabilities</div>
+          <div class="grid-3" style="gap:12px;">
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-microchip" style="margin-right:6px;"></i> Engineering Data Extraction</div>
+              <p class="body-sm" style="font-size:12px;">Extracts dimensions, annotations, and manufacturing features from CAD document inputs (e.g. STEP, DXF, and DWG).</p>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-calculator" style="margin-right:6px;"></i> Dynamic Pricing</div>
+              <p class="body-sm" style="font-size:12px;">Calculates BoQ based on updated-market and recommend appropriate production processes.</p>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;"><i class="fa-solid fa-clipboard-list" style="margin-right:6px;"></i> Procurement Intelligence Pack</div>
+              <p class="body-sm" style="font-size:12px;">Generates procurement-ready outputs with material requirements, process, and preliminary cost insights.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: HOW — The Process (NATIVE FLOW DIAGRAM) -->
+  <div class="slide slide-full">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+      <div>
+        <span class="slide-label">Technical Pipeline</span>
+        <h2 class="section-head" style="margin-bottom:0;">The 5-Stage Parasolid Architecture</h2>
+      </div>
+    </div>
+    
+    <div class="flow-container">
+      <div class="flow-line"></div>
+      
+      <div class="flow-node highlight">
+        <div class="flow-step-num">1</div>
+        <div class="flow-icon"><i class="fa-solid fa-file-import"></i></div>
+        <div class="flow-title">File Ingestion</div>
+        <div class="flow-desc">Convert 2D/3D drawing from DWG, DXF, STEP, IGES into neutral B-Rep memory.</div>
+      </div>
+      
+      <div class="flow-node highlight">
+        <div class="flow-step-num">2</div>
+        <div class="flow-icon"><i class="fa-solid fa-cube"></i></div>
+        <div class="flow-title">Geometry Kernel</div>
+        <div class="flow-desc">Parasolid engine (OCCT) computes surface, volumes, tolerances, etc.).</div>
+      </div>
+
+      <div class="flow-node highlight">
+        <div class="flow-step-num">3</div>
+        <div class="flow-icon"><i class="fa-solid fa-microchip"></i></div>
+        <div class="flow-title">Feature Extraction</div>
+        <div class="flow-desc">ResNet ML and rule classifiers specific features (e.g. holes, threads, cylinder, etc.)</div>
+      </div>
+
+      <div class="flow-node active">
+        <div class="flow-step-num">4</div>
+        <div class="flow-icon"><i class="fa-solid fa-gears"></i></div>
+        <div class="flow-title">Decision Engine</div>
+        <div class="flow-desc">Via rule and LLM reasoning for a structured-production process sequence.</div>
+      </div>
+
+      <div class="flow-node highlight">
+        <div class="flow-step-num">5</div>
+        <div class="flow-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        <div class="flow-title">Quotation Generation</div>
+        <div class="flow-desc">Formatting JSON into BoQ and procurement plans.</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="flex:1; margin-top: 10px;">
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center; border-left: 4px solid var(--teal);">
+        <h3 class="card-title">Deterministic Engineering Data</h3>
+        <p class="body-sm" style="margin-bottom:12px;">We combine geometry-based CAD parsing with manufacturing rules, ensuring that  dimensions and features are extracted from engineering data to avoid inconcistencies.</p>
+        <p class="body-sm">A detected hole, thread, or feature are linked to relevant manufacturing processes for areliable foundation for quotation and procurement preparation.</p>
+      </div>
+      <div class="card-sand" style="display:flex;flex-direction:column;justify-content:center;">
+        <h3 class="card-title">SME Drawing Fallbacks</h3>
+        <p class="body-sm" style="margin-bottom:12px;">We solve unstructured drawing issues by Python-OCC and LibreCAD SDK to validate and structure boundary geometry before execution.</p>
+        <p class="body-sm">Then, we build a library of Parasolid models based on historical part types to enhance processing uptime.</p>
       </div>
     </div>
   </div>
@@ -1436,7 +461,7 @@ window.addEventListener('beforeprint', () => {
           <div class="mk-panel" style="flex:0.85;">
             <span class="slide-label">Bill of Quantities Summary</span>
             <div class="card" style="padding:16px; margin-bottom:12px;">
-              <div style="font-size:11px;color:var(--stone-dark);font-weight:700;text-transform:uppercase;">Target Cost</div>
+              <div style="font-size:11px;color:var(--stone-dark);font-weight:700;text-transform:uppercase;">Re-estimate Target Cost</div>
               <div id="w-cost" style="font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink); margin-top:4px;">---</div>
             </div>
             <div class="card" id="w-supplier-card" style="padding:16px; border-left:4px solid var(--border); transition:0.3s; margin-bottom:20px;">
@@ -1507,7 +532,7 @@ window.addEventListener('beforeprint', () => {
               <div style="width:36px;height:36px;background:var(--navy);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-users-viewfinder"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Customer</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Precision SMEs.</strong> Overwhelmed by high-mix, low-volume orders and manual BoQ generation. They completely lack IT budgets for heavy ERP software.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Precision Manufacturing SMEs</strong> High-mix, low-volume manufacturers with manual quotation workflows without ERP systems.</p>
           </div>
 
           <!-- Brand -->
@@ -1516,7 +541,7 @@ window.addEventListener('beforeprint', () => {
               <div style="width:36px;height:36px;background:var(--amber);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-award"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Brand</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>The Pocket Consultant.</strong> A lightweight, highly intelligent sidekick that empowers sales engineers rather than acting as a disruptive admin system.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>The Pocket Consultant.</strong> An AI assistant that helps engineers prepare quotations faster without disrupting existing workflows.</p>
           </div>
 
           <!-- Touch Point -->
@@ -1525,7 +550,7 @@ window.addEventListener('beforeprint', () => {
               <div style="width:36px;height:36px;background:var(--teal);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-mobile-screen"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Touch Point</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Native Messaging.</strong> Zero app installations. Operators simply forward a CAD file via LINE or Telegram and receive a PDF BoQ instantly.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Telegram & Line</strong> Users upload engineering drawings and receive BoQ through mainstream messaging platforms.</p>
           </div>
 
           <!-- Competition -->
@@ -1534,7 +559,7 @@ window.addEventListener('beforeprint', () => {
               <div style="width:36px;height:36px;background:var(--stone-dark);border-radius:6px;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;"><i class="fa-solid fa-chess-knight"></i></div>
               <h3 class="card-title" style="margin:0;font-size:18px;">Competition</h3>
             </div>
-            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>Legacy ERPs.</strong> We completely bypass the massive upfront licensing costs and 6-month onboarding periods required by traditional competitors.</p>
+            <p class="body-sm" style="font-size:13px; line-height: 1.5;"><strong>ERP-Free Adoption.</strong> Unlike ERP systems, ProQuantify simplifies implementation, training, or long deployment.</p>
           </div>
 
         </div>
@@ -1543,93 +568,91 @@ window.addEventListener('beforeprint', () => {
     </div>
   </div>
 
-  <!-- SLIDE 7: PRICING -->
+   <!-- SLIDE 7: PRICING + ROADMAP -->
   <div class="slide slide-full">
-    <div style="text-align:center; margin-bottom:20px;">
-      <span class="slide-label">Business Model & Monetization</span>
-      <h2 class="section-head" style="margin-bottom:0; font-size: 28px;">Accessible for SMEs. Built for Enterprise.</h2>
-    </div>
-    
-    <div class="grid-3" style="max-width: 1100px; margin-inline:auto; gap: 12px;">
-      <div class="pricing-col">
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px;">Basic Tier</h3>
-        <p class="body-sm">For independent operators needing fast answers.</p>
-        <div class="pricing-price">NT$1,500<span style="font-size:16px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
-        <div class="divider" style="margin: 12px 0;"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li><i class="fa-solid fa-check"></i> <strong>Up to 50 BoQs / Month</strong></li>
-          <li><i class="fa-solid fa-check"></i> Reads CAD, STEP, DXF, DWG</li>
-          <li><i class="fa-solid fa-check"></i> Base Price Estimation</li>
-          <li><i class="fa-solid fa-check"></i> Static Supplier Match</li>
-        </ul>
-      </div>
-      
-      <div class="pricing-col featured">
-        <div class="tag tag-teal" style="align-self: flex-start; margin-bottom: 12px;">Most Popular</div>
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px; color:var(--teal);">Pro Tier</h3>
-        <p class="body-sm">For growing sub-contractors handling complex BoQ requests.</p>
-        <div class="pricing-price" style="color:var(--teal);">NT$3,000<span style="font-size:16px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
-        <div class="divider" style="margin: 12px 0; background: rgba(29,122,107,0.2);"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li><i class="fa-solid fa-check"></i> <strong>Up to 300 BoQs / Month</strong></li>
-          <li><i class="fa-solid fa-check"></i> <strong>Live Time Estimation:</strong> Based on live supplier availability.</li>
-          <li><i class="fa-solid fa-check"></i> Real-time Lead Time Calculation</li>
-          <li><i class="fa-solid fa-check"></i> Professional PDF BoQ Export</li>
-        </ul>
-      </div>
-      
-      <div class="pricing-col" style="background:var(--navy); color:white; border-color:var(--navy);">
-        <h3 class="card-title" style="font-size:22px; margin-bottom:4px; color:white;">Enterprise</h3>
-        <p class="body-sm" style="color:rgba(255,255,255,0.7);">For large parent networks and tier-1 suppliers.</p>
-        <div class="pricing-price" style="color:white;">Custom<span style="font-size:16px; color:rgba(255,255,255,0.7); font-family:'DM Sans',sans-serif;">/yr</span></div>
-        <div class="divider" style="margin: 12px 0; background: rgba(255,255,255,0.1);"></div>
-        <ul class="check-list" style="margin-top: 12px; flex: 1;">
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> <strong>Unlimited BoQ Volume</strong></li>
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Installed locally on secure factory servers.</li>
-          <li style="color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Direct API integrations for legacy ERPs.</li>
-        </ul>
+    <div style="margin-bottom:12px;">
+      <span class="slide-label">Business Model & Execution Plan</span>
+      <h2 class="section-head" style="margin-bottom:10px; font-size:30px;">Accessible pricing. Clear path to scale.</h2>
+      <div style="height:40px; width:100%; background:rgba(196,123,43,0.1); border:1px solid rgba(196,123,43,0.3); padding:0 16px; border-radius:10px; font-size:12px; color:var(--amber); font-weight:700; display:flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-gift"></i> 14-Day Free Trial · Up to 10 Free BoQs
       </div>
     </div>
 
-    <!-- Trial Callout -->
-    <div style="text-align: center; margin-top: 16px;">
-      <div style="display:inline-block; background:rgba(196,123,43,0.1); border:1px solid rgba(196,123,43,0.3); padding:8px 24px; border-radius:24px; font-size:12px; color:var(--amber); font-weight:600;">
-        <i class="fa-solid fa-gift" style="margin-right:8px;"></i> All SME tiers include a risk-free 14-Day Free Trial (Up to 10 Free BoQs).
-      </div>
-    </div>
-  </div>
+    <div style="display:flex; flex-direction:column; gap:12px; flex:1; min-height:0;">
+      <div style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:18px; height:392px; flex:0 0 392px; min-height:0;">
+        <div class="grid-3" style="gap:10px; height:100%;">
+          <div class="pricing-col" style="border-radius:12px; padding:18px 16px;">
+            <h3 class="card-title" style="font-size:18px; margin-bottom:4px;">Basic Tier</h3>
+            <p class="body-sm" style="font-size:12px;">For independent operators.</p>
+            <div class="pricing-price" style="font-size:30px;">NT$1,500<span style="font-size:13px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
+            <div class="divider" style="margin:10px 0;"></div>
+            <ul class="check-list" style="margin-top:8px; flex:1;">
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> <strong>Up to 50 BoQs / Month</strong></li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Reads CAD, STEP, DXF, DWG</li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Base Price Estimation</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-col featured" style="border-radius:12px; padding:18px 16px; transform:none;">
+            <div class="tag tag-teal" style="align-self:flex-start; margin-bottom:10px;">Most Popular</div>
+            <h3 class="card-title" style="font-size:18px; margin-bottom:4px; color:var(--teal);">Pro Tier</h3>
+            <p class="body-sm" style="font-size:12px;">For complex BoQ requests.</p>
+            <div class="pricing-price" style="font-size:30px; color:var(--teal);">NT$3,000<span style="font-size:13px; color:var(--stone-dark); font-family:'DM Sans',sans-serif;">/mo</span></div>
+            <div class="divider" style="margin:10px 0; background:rgba(29,122,107,0.2);"></div>
+            <ul class="check-list" style="margin-top:8px; flex:1;">
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> <strong>Up to 300 BoQs / Month</strong></li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Live lead-time estimation</li>
+              <li style="font-size:12px;margin-bottom:9px;"><i class="fa-solid fa-check"></i> Professional PDF export</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-col" style="background:var(--navy); color:white; border-color:var(--navy); border-radius:12px; padding:18px 16px;">
+            <h3 class="card-title" style="font-size:18px; margin-bottom:4px; color:white;">Enterprise</h3>
+            <p class="body-sm" style="font-size:12px;color:rgba(255,255,255,0.7);">For parent networks.</p>
+            <div class="pricing-price" style="font-size:30px;color:white;">Custom<span style="font-size:13px; color:rgba(255,255,255,0.7); font-family:'DM Sans',sans-serif;">/yr</span></div>
+            <div class="divider" style="margin:10px 0; background:rgba(255,255,255,0.1);"></div>
+            <ul class="check-list" style="margin-top:8px; flex:1;">
+              <li style="font-size:12px;margin-bottom:9px;color:white;"><i class="fa-solid fa-check" style="color:white;"></i> <strong>Unlimited BoQ Volume</strong></li>
+              <li style="font-size:12px;margin-bottom:9px;color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Secure local deployment</li>
+              <li style="font-size:12px;margin-bottom:9px;color:white;"><i class="fa-solid fa-check" style="color:white;"></i> Legacy ERP APIs</li>
+            </ul>
+          </div>
+        </div>
 
-  <!-- SLIDE 8: ROADMAP -->
-  <div class="slide slide-full">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;">
-      <div>
-        <span class="slide-label">Execution Plan</span>
-        <h2 class="section-head" style="margin-bottom:0;">Roadmap to Scale</h2>
-      </div>
-    </div>
-    
-    <div style="display:flex; flex-direction:column; justify-content:center; flex:1;">
-      <div class="tl-row" style="background:var(--cream); border:1px solid var(--border);">
-        <div class="tl-year" style="color:var(--stone-dark);">2026</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:var(--ink); margin-bottom:6px;">Phase 1: Test, Validate & MVP</h3>
-          <p class="body-sm" style="max-width:700px;">Deploying the initial MVP utilizing GTEP funding. Testing with 1–3 pilot factories to create absolute trust in the AI accuracy. Goal: <strong>95% BoQ Accuracy vs. Human Engineers.</strong></p>
+        <div style="display:grid; grid-template-rows:repeat(3, minmax(0, 1fr)); gap:12px; height:100%;">
+          <div style="background:var(--cream); border:1px solid var(--border); border-radius:12px; padding:18px; display:grid; grid-template-columns:96px 1fr; gap:20px; align-items:center; min-height:0;">
+            <div style="font-family:'DM Serif Display',serif;font-size:38px;color:var(--stone-dark);line-height:1;">2026</div>
+            <div>
+              <h3 style="font-size:17px; color:var(--ink); margin-bottom:5px;">Phase 1: Test, Validate & MVP</h3>
+              <p class="body-sm" style="font-size:12px;">Pilot with 1-3 factories and validate <strong>95% BoQ Accuracy vs. Human Engineers.</strong></p>
+            </div>
+          </div>
+          
+          <div style="background:var(--teal-light); border:2px solid var(--teal); border-radius:12px; padding:18px; display:grid; grid-template-columns:96px 1fr; gap:20px; align-items:center; min-height:0;">
+            <div style="font-family:'DM Serif Display',serif;font-size:38px;color:var(--teal);line-height:1;">2027</div>
+            <div>
+              <h3 style="font-size:17px; color:var(--teal); margin-bottom:5px;">Phase 2: Organic Launch in the South</h3>
+              <p class="body-sm" style="font-size:12px;">Onboard 30-50 mid-tier factories across Southern Taiwan through ecosystem partnerships.</p>
+            </div>
+          </div>
+          
+          <div style="background:var(--navy); border:1px solid var(--navy); border-radius:12px; padding:18px; display:grid; grid-template-columns:104px 1fr; gap:22px; align-items:center; min-height:0;">
+            <div style="font-family:'DM Serif Display',serif;font-size:36px;color:white;line-height:1; white-space:nowrap;">2028+</div>
+            <div>
+              <h3 style="font-size:17px; color:white; margin-bottom:5px;">Phase 3: Enterprise Scale</h3>
+              <p class="body-sm" style="font-size:12px;color:rgba(255,255,255,0.7);">Expand north and sell top-down Enterprise licenses to parent company networks.</p>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div class="tl-row" style="background:var(--teal-light); border:2px solid var(--teal); box-shadow: 0 10px 30px rgba(29,122,107,0.1); transform: scale(1.02); z-index:10;">
-        <div class="tl-year" style="color:var(--teal);">2027</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:var(--teal); margin-bottom:6px;">Phase 2: Organic Launch in the South</h3>
-          <p class="body-sm" style="max-width:700px; color:var(--stone-dark);">Leveraging our existing organic network in Kaohsiung to scale reliably. Executing Go-To-Market via ecosystem partnerships and onboarding 30–50 mid-tier factories across Southern Taiwan.</p>
+
+      <div style="width:100%; background:var(--sand); border:1px solid var(--border-med); padding:12px 16px; border-radius:12px; display:flex; align-items:center; gap:12px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--navy);color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="fa-solid fa-file-shield"></i>
         </div>
-      </div>
-      
-      <div class="tl-row" style="background:var(--navy); border:1px solid var(--navy);">
-        <div class="tl-year" style="color:white;">2028+</div>
-        <div style="flex:1;">
-          <h3 style="font-size:22px; color:white; margin-bottom:6px;">Phase 3: Northward Expansion & Enterprise Scale</h3>
-          <p class="body-sm" style="max-width:700px; color:rgba(255,255,255,0.7);">Expanding from our Southern stronghold into the Northern industrial hubs. Selling top-down Enterprise licenses to parent companies, mandating ProQuantify usage across their sub-contractor networks.</p>
+        <div style="text-align:left;">
+          <div style="font-size:12px;font-weight:800;color:var(--ink);margin-bottom:2px;">Secure Drawing Vault with Non-Disclosure Agreement</div>
+          <div style="font-size:11px;color:var(--stone-dark);line-height:1.35;">Confidential drawings stay under restricted workspace access, retention control, and enterprise on-premises deployment when required.</div>
         </div>
       </div>
     </div>
@@ -1705,7 +728,7 @@ window.addEventListener('beforeprint', () => {
       
       <div style="display:flex; justify-content:center;">
         <div style="padding:14px 32px;background:var(--teal);border-radius:8px;font-size:15px;color:white;font-weight:700; cursor:pointer; letter-spacing: 0.02em; display:flex; align-items:center; gap: 10px;">
-          <i class="fa-solid fa-envelope"></i> ask@proquantify.io
+          <i class="fa-solid fa-envelope"></i> ask@proquantify.com
         </div>
       </div>
     </div>
@@ -1714,7 +737,7 @@ window.addEventListener('beforeprint', () => {
   <!-- FOOTER -->
   <div class="foot" id="main-foot">
     <div class="foot-brand">ProQuantify</div>
-    <div class="foot-num" id="slideNum">1 / 10</div>
+    <div class="foot-num" id="slideNum">1 / 8</div>
     <div class="foot-nav">
       <button class="nav-btn" onclick="nav(-1)"><i class="fa-solid fa-arrow-left"></i></button>
       <button class="nav-btn" onclick="nav(1)"><i class="fa-solid fa-arrow-right"></i></button>
@@ -1738,7 +761,7 @@ function render() {
   progress.style.width = ((cur + 1) / slides.length * 100) + '%';
   slideNum.textContent = (cur + 1) + ' / ' + slides.length;
   
-  if(cur === 9 || cur === 0) {
+  if(cur === slides.length - 1 || cur === 0) {
       footer.classList.add('foot-dark');
   } else {
       footer.classList.remove('foot-dark');
@@ -1828,6 +851,8 @@ function playDemo() {
         document.getElementById('w-btn-review').disabled = false;
     }, 7000);
 }
+
+// --- PDF Export: force Slide 5 demo to final state before printing ---
 function forceDemoFinalState() {
   // Mobile chat final state
   ['m-file', 'm-step1', 'm-step2', 'm-step3'].forEach(id => {
